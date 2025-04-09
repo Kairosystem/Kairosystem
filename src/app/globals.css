@@ -92,13 +92,13 @@
 
 /* Estilos para botones */
 .btn-primary {
-  @apply relative overflow-hidden bg-green-500 text-black font-medium rounded-md transition-all duration-300;
+  @apply relative overflow-hidden bg-green-500 text-black font-medium rounded-md transition-all duration-300 cursor-pointer;
 }
 
 .btn-primary::before {
   content: "";
   @apply absolute top-0 left-0 w-full h-full bg-green-600 transform scale-x-0 origin-left transition-transform duration-300;
-  z-index: -1;
+  z-index: 0;
 }
 
 .btn-primary:hover::before {
@@ -110,13 +110,13 @@
 }
 
 .btn-outline {
-  @apply relative overflow-hidden border border-green-500 text-green-500 font-medium rounded-md transition-all duration-300;
+  @apply relative overflow-hidden border border-green-500 text-green-500 font-medium rounded-md transition-all duration-300 cursor-pointer;
 }
 
 .btn-outline::before {
   content: "";
   @apply absolute top-0 left-0 w-full h-full bg-green-500 transform scale-x-0 origin-left transition-transform duration-300;
-  z-index: -1;
+  z-index: 0;
 }
 
 .btn-outline:hover {
