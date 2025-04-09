@@ -3,39 +3,135 @@
 @tailwind utilities;
 @import "tailwindcss";
 
-@keyframes slide {
-  0% {
-    transform: translateX(-50%);
-  }
+/* Animaciones para botones y elementos */
+@keyframes pulse {
+  0%,
   100% {
-    transform: translateX(0%);
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
   }
 }
 
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
-/* Estilos explícitos para asegurar que se apliquen */
-.bg-dark {
-  background-color: #0a0b11 !important;
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(34, 197, 94, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+  }
 }
 
-.text-neon {
-  color: #00ff66 !important;
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-.text-darkgray {
-  color: #1a1b21 !important;
+@keyframes slideInRight {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-/* Asegurarse de que hover funcione */
-.hover\:text-white:hover {
-  color: white !important;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.hover\:scale-110:hover {
-  transform: scale(1.1) !important;
+/* Clases de animación */
+.animate-pulse-slow {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.5s ease-out forwards;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.5s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Estilos para botones */
+.btn-primary {
+  @apply relative overflow-hidden bg-green-500 text-black font-medium rounded-md transition-all duration-300;
+}
+
+.btn-primary::before {
+  content: "";
+  @apply absolute top-0 left-0 w-full h-full bg-green-600 transform scale-x-0 origin-left transition-transform duration-300;
+  z-index: -1;
+}
+
+.btn-primary:hover::before {
+  @apply transform scale-x-100;
+}
+
+.btn-primary:active {
+  @apply transform scale-95;
+}
+
+.btn-outline {
+  @apply relative overflow-hidden border border-green-500 text-green-500 font-medium rounded-md transition-all duration-300;
+}
+
+.btn-outline::before {
+  content: "";
+  @apply absolute top-0 left-0 w-full h-full bg-green-500 transform scale-x-0 origin-left transition-transform duration-300;
+  z-index: -1;
+}
+
+.btn-outline:hover {
+  @apply text-black;
+}
+
+.btn-outline:hover::before {
+  @apply transform scale-x-100;
+}
+
+.btn-outline:active {
+  @apply transform scale-95;
+}
+
+/* Estilos para tarjetas */
+.card-hover {
+  @apply transition-all duration-300 hover:transform hover:scale-105 hover:shadow-xl;
 }
