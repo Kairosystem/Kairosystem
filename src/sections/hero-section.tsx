@@ -80,7 +80,7 @@ export default function HeroSection() {
       </div>
 
       {/* Video de fondo a pantalla completa */}
-      <div className="absolute inset-0 z-0 ">
+      <div className="absolute inset-0 z-0 top-[35%] lg:top-0">
         <video
           className="w-full h-full object-contain lg:object-cover"
           autoPlay
