@@ -25,10 +25,10 @@ export default function HeroSection() {
   }
 
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-black">
+    <section className="relative w-full h-screen overflow-hidden">
       {/* Contenido alineado a la izquierda y en pantallas grandes desplazado a la derecha */}
       <div className="container mx-auto px-6 z-20 relative h-full">
-        <div className="pt-24 md:pt-32 lg:pt-40 max-w-2xl lg:ml-[5%]">
+        <div className="mt-24 max-w-2xl lg:ml-[5%]">
           <motion.div initial="hidden" animate="visible" custom={0} variants={fadeIn} className="space-y-2">
             <span className="inline-block px-3 py-1 bg-[#51E171]/10 text-[#51E171] rounded-full text-xs font-medium mb-2">
               Kairosystem
@@ -43,7 +43,7 @@ export default function HeroSection() {
             animate="visible"
             custom={1}
             variants={fadeIn}
-            className="text-base sm:text-lg  text-gray-200  mt-6"
+            className="text-base sm:text-lg  text-gray-200 mt-6"
           >
             Transformamos ideas en experiencias digitales impactantes. Desarrollo web y software personalizado para
             potenciar tu presencia online.
@@ -80,7 +80,7 @@ export default function HeroSection() {
       </div>
 
       {/* Video de fondo a pantalla completa */}
-      <div className="absolute inset-0 z-0 top-[20%] lg:top-[22%]">
+      <div className="absolute inset-0 z-0 ">
         <video
           className="w-full h-full object-contain lg:object-cover"
           autoPlay
