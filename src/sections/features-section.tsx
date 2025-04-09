@@ -1,115 +1,121 @@
+"use client"
+
+import { motion } from "framer-motion"
+import { ShoppingBag, Smartphone, Code, Zap, Layers, Lock } from 'lucide-react'
+
 export default function FeaturesSection() {
-    return (
-      <section className="py-20 relative overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Tecnología <span className="text-green-500">avanzada</span> para tu negocio
-            </h2>
-            <p className="text-xl text-gray-400">
-              Utilizamos las últimas tecnologías para crear soluciones digitales rápidas, seguras y escalables.
-            </p>
-          </div>
-  
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div
-              className="bg-gray-900 bg-opacity-50 backdrop-blur-sm rounded-xl p-8 border border-gray-800 hover:border-green-500/30 card-hover animate-fade-in"
-              style={{ animationDelay: "0.2s" }}
+  const features = [
+    {
+      icon: <ShoppingBag className="h-6 w-6" />,
+      title: "E-commerce",
+      description: "Tiendas online optimizadas para convertir visitantes en clientes y aumentar tus ventas.",
+    },
+    {
+      icon: <Smartphone className="h-6 w-6" />,
+      title: "Diseño Responsivo",
+      description: "Sitios web que se adaptan perfectamente a cualquier dispositivo, desde móviles hasta escritorio.",
+    },
+    {
+      icon: <Code className="h-6 w-6" />,
+      title: "Código Limpio",
+      description: "Desarrollo con las mejores prácticas para garantizar un rendimiento óptimo y mantenibilidad.",
+    },
+    {
+      icon: <Zap className="h-6 w-6" />,
+      title: "Alto Rendimiento",
+      description: "Aplicaciones rápidas y eficientes que ofrecen una experiencia de usuario excepcional.",
+    },
+    {
+      icon: <Layers className="h-6 w-6" />,
+      title: "Escalabilidad",
+      description: "Soluciones que crecen con tu negocio, adaptándose a nuevas necesidades y volumen de usuarios.",
+    },
+    {
+      icon: <Lock className="h-6 w-6" />,
+      title: "Seguridad",
+      description: "Implementación de protocolos de seguridad avanzados para proteger datos e información sensible.",
+    },
+  ]
+
+  return (
+    <section className="py-24 bg-black relative overflow-hidden">
+      {/* Elementos decorativos de fondo */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#51E171]/30 to-transparent"></div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        className="absolute -top-[300px] -left-[300px] w-[600px] h-[600px] rounded-full bg-[#51E171]/5 blur-3xl"
+      ></motion.div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5, delay: 0.5 }}
+        className="absolute -bottom-[200px] -right-[200px] w-[500px] h-[500px] rounded-full bg-[#51E171]/5 blur-3xl"
+      ></motion.div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="max-w-3xl mx-auto text-center mb-16"
+        >
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="h-1 w-20 bg-[#51E171] mx-auto mb-6"
+          ></motion.div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#EDFFCD]">
+            <span className="text-[#EDFFCD]">Tecnología</span>{" "}
+            <span className="text-[#51E171]">avanzada</span> para tu negocio
+          </h2>
+          <p className="text-xl text-gray-400">
+            Utilizamos las últimas tecnologías para crear soluciones digitales rápidas, seguras y escalables.
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl p-6 hover:border-[#51E171]/30 transition-all duration-300 group"
             >
-              <div className="h-12 w-12 rounded-lg bg-green-500/20 flex items-center justify-center mb-6 animate-float">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-6 w-6 text-green-500"
-                >
-                  <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
-                  <path d="M3 6h18" />
-                  <path d="M16 10a4 4 0 0 1-8 0" />
-                </svg>
+              <div className="flex items-start gap-4">
+                <div className="p-3 rounded-lg bg-[#51E171]/10 text-[#51E171] group-hover:bg-[#51E171]/20 transition-all duration-300">
+                  {feature.icon}
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-[#51E171] transition-colors duration-300">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">{feature.description}</p>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-3">E-commerce</h3>
-              <p className="text-gray-400">
-                Tiendas online optimizadas para convertir visitantes en clientes y aumentar tus ventas.
-              </p>
-            </div>
-  
-            {/* Feature 2 */}
-            <div
-              className="bg-gray-900 bg-opacity-50 backdrop-blur-sm rounded-xl p-8 border border-gray-800 hover:border-green-500/30 card-hover animate-fade-in"
-              style={{ animationDelay: "0.4s" }}
-            >
-              <div className="h-12 w-12 rounded-lg bg-green-500/20 flex items-center justify-center mb-6 animate-float">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-6 w-6 text-green-500"
-                >
-                  <circle cx="12" cy="12" r="10" />
-                  <line x1="2" x2="22" y1="12" y2="12" />
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-3">Diseño Responsivo</h3>
-              <p className="text-gray-400">
-                Sitios web que se adaptan perfectamente a cualquier dispositivo, desde móviles hasta escritorio.
-              </p>
-            </div>
-  
-            {/* Feature 3 */}
-            <div
-              className="bg-gray-900 bg-opacity-50 backdrop-blur-sm rounded-xl p-8 border border-gray-800 hover:border-green-500/30 card-hover animate-fade-in"
-              style={{ animationDelay: "0.6s" }}
-            >
-              <div className="h-12 w-12 rounded-lg bg-green-500/20 flex items-center justify-center mb-6 animate-float">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-6 w-6 text-green-500"
-                >
-                  <polyline points="16 18 22 12 16 6" />
-                  <polyline points="8 6 2 12 8 18" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-3">Código Limpio</h3>
-              <p className="text-gray-400">
-                Desarrollo con las mejores prácticas para garantizar un rendimiento óptimo y mantenibilidad.
-              </p>
-            </div>
-          </div>
+            </motion.div>
+          ))}
         </div>
-  
-        {/* Animated background elements */}
-        <div
-          className="absolute -bottom-24 -left-24 w-64 h-64 bg-green-500 bg-opacity-10 rounded-full animate-pulse-slow"
-          style={{ filter: "blur(60px)" }}
-        ></div>
-        <div
-          className="absolute top-1/2 right-0 w-80 h-80 bg-green-500 bg-opacity-5 rounded-full animate-pulse-slow"
-          style={{ filter: "blur(60px)", animationDelay: "1s" }}
-        ></div>
-      </section>
-    )
-  }
-  
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          viewport={{ once: true }}
+          className="mt-16 text-center"
+        >
+          <div className="inline-block px-6 py-3 border border-[#51E171]/30 rounded-full bg-[#51E171]/5 text-[#EDFFCD]">
+            <span className="text-sm font-medium">Tecnologías de vanguardia para resultados excepcionales</span>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
