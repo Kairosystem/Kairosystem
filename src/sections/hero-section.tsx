@@ -28,7 +28,7 @@ export default function HeroSection() {
     <section className="relative w-full h-screen overflow-hidden">
       {/* Contenido alineado a la izquierda y en pantallas grandes desplazado a la derecha */}
       <div className="container mx-auto px-6 z-20 relative h-full">
-        <div className="mt-24 max-w-2xl lg:ml-[5%]">
+        <div className="md:mt-24 max-w-2xl lg:ml-[5%]">
           <motion.div initial="hidden" animate="visible" custom={0} variants={fadeIn} className="space-y-2">
             <span className="inline-block px-3 py-1 bg-[#51E171]/10 text-[#51E171] rounded-full text-xs font-medium mb-2">
               Kairosystem
