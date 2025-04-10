@@ -1,94 +1,106 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState, useRef, useEffect } from "react"
-import { Bot, X, Send, Loader2 } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
+import type React from "react";
+import { useState, useRef, useEffect } from "react";
+import { Bot, X, Send, Loader2 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Definir tipos para los mensajes
-type MessageRole = "user" | "bot"
+type MessageRole = "user" | "bot";
 
 interface ChatMessage {
-  content: string
-  role: MessageRole
-  timestamp: Date
+  content: string;
+  role: MessageRole;
+  timestamp: Date;
 }
 
 export default function Chatbot() {
-  const [isChatOpen, setIsChatOpen] = useState(false)
-  const [message, setMessage] = useState("")
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
-      content: "¡Hola! Soy el asistente virtual de Kairosystem. ¿En qué puedo ayudarte hoy?",
+      content:
+        "¡Hola! Soy el asistente virtual de Kairosystem. ¿En qué puedo ayudarte hoy?",
       role: "bot",
       timestamp: new Date(),
     },
-  ])
-  const [loading, setLoading] = useState(false)
-  const [isTyping, setIsTyping] = useState(false)
-  const messagesEndRef = useRef<HTMLDivElement>(null)
-  const inputRef = useRef<HTMLInputElement>(null)
+  ]);
+  const [loading, setLoading] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   // Efecto para hacer scroll al último mensaje
   useEffect(() => {
-    scrollToBottom()
-  }, [messages])
+    scrollToBottom();
+  }, [messages]);
 
   // Efecto para enfocar el input cuando se abre el chat
   useEffect(() => {
     if (isChatOpen && inputRef.current) {
       setTimeout(() => {
-        inputRef.current?.focus()
-      }, 300)
+        inputRef.current?.focus();
+      }, 300);
     }
-  }, [isChatOpen])
+  }, [isChatOpen]);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-  }
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const toggleChat = () => {
-    setIsChatOpen(!isChatOpen)
-  }
+    setIsChatOpen(!isChatOpen);
+  };
 
   const handleSendMessage = async () => {
-    if (message.trim() === "") return
+    if (message.trim() === "") return;
 
     // Agregar el mensaje del usuario a la lista
     const userMessage: ChatMessage = {
       content: message,
       role: "user",
       timestamp: new Date(),
-    }
+    };
 
-    setMessages((prevMessages) => [...prevMessages, userMessage])
-    setMessage("") // Limpiar el campo de entrada
-    setLoading(true) // Mostrar indicador de carga
+    setMessages((prevMessages) => [...prevMessages, userMessage]);
+    setMessage(""); // Limpiar el campo de entrada
+    setLoading(true); // Mostrar indicador de carga
 
     // Simular efecto de escritura
-    setIsTyping(true)
+    setIsTyping(true);
 
     try {
-      const response = await fetch("/api/api-openai/chat", {
+      const response = await fetch("/api/api-routerApi", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          messages: [{ role: "user", content: [{ type: "text", text: message }] }],
+          messages: [
+            {
+              role: "system",
+              content: [
+                {
+                  type: "text",
+                  text: "Eres un bot de la empresa desarrolladora de software KairoSystem, se amable y profesional. Debes tratar de recalcar que solo estas allí para hablar y aclarar sobre los servicios que ofrecemos, por ejemplo desarrollo de software a medida",
+                },
+              ],
+            },
+            { role: "user", content: [{ type: "text", text: message }] },
+          ],
         }),
-      })
+      });
 
       if (!response.ok) {
-        throw new Error("Error en la respuesta del servidor")
+        throw new Error("Error en la respuesta del servidor");
       }
 
-      const data = await response.json()
-      const botMessage = data.message
+      const data = await response.json();
+      const botMessage = data.message;
 
       // Pequeña pausa para simular que el bot está escribiendo
       setTimeout(() => {
-        setIsTyping(false)
+        setIsTyping(false);
 
         // Agregar la respuesta del bot a la lista de mensajes
         setMessages((prevMessages) => [
@@ -98,40 +110,41 @@ export default function Chatbot() {
             role: "bot",
             timestamp: new Date(),
           },
-        ])
+        ]);
 
-        setLoading(false) // Ocultar indicador de carga
-      }, 1000)
+        setLoading(false); // Ocultar indicador de carga
+      }, 1000);
     } catch (error) {
-      console.error("Error al enviar el mensaje:", error)
+      console.error("Error al enviar el mensaje:", error);
 
       setTimeout(() => {
-        setIsTyping(false)
+        setIsTyping(false);
         setMessages((prevMessages) => [
           ...prevMessages,
           {
-            content: "Lo siento, ha ocurrido un error al procesar tu mensaje. Por favor, intenta de nuevo más tarde.",
+            content:
+              "Lo siento, ha ocurrido un error al procesar tu mensaje. Por favor, intenta de nuevo más tarde.",
             role: "bot",
             timestamp: new Date(),
           },
-        ])
-        setLoading(false)
-      }, 1000)
+        ]);
+        setLoading(false);
+      }, 1000);
     }
-  }
+  };
 
   // Manejar envío con Enter
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey && !loading) {
-      e.preventDefault()
-      handleSendMessage()
+      e.preventDefault();
+      handleSendMessage();
     }
-  }
+  };
 
   // Formatear la hora para los mensajes
   const formatTime = (date: Date) => {
-    return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
-  }
+    return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  };
 
   return (
     <>
@@ -173,7 +186,9 @@ export default function Chatbot() {
                   <Bot className="h-5 w-5 text-black" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-white">Asistente Kairosystem</h3>
+                  <h3 className="font-medium text-white">
+                    Asistente Kairosystem
+                  </h3>
                   <div className="flex items-center gap-1">
                     <span className="h-2 w-2 rounded-full bg-[#51E171]"></span>
                     <span className="text-xs text-gray-300">En línea</span>
@@ -190,10 +205,21 @@ export default function Chatbot() {
             </div>
 
             {/* Contenido del chat */}
-            <div className="flex-1 p-4 overflow-y-auto" style={{ scrollbarWidth: "thin", scrollbarColor: "#51E171 #333333" }}>
+            <div
+              className="flex-1 p-4 overflow-y-auto"
+              style={{
+                scrollbarWidth: "thin",
+                scrollbarColor: "#51E171 #333333",
+              }}
+            >
               <div className="space-y-4">
                 {messages.map((msg, index) => (
-                  <div key={index} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+                  <div
+                    key={index}
+                    className={`flex ${
+                      msg.role === "user" ? "justify-end" : "justify-start"
+                    }`}
+                  >
                     <div
                       className={`max-w-[80%] rounded-2xl px-4 py-2 ${
                         msg.role === "user"
@@ -201,10 +227,14 @@ export default function Chatbot() {
                           : "bg-gray-800 text-white rounded-tl-none"
                       }`}
                     >
-                      <div className="text-sm break-words whitespace-pre-wrap">{msg.content}</div>
+                      <div className="text-sm break-words whitespace-pre-wrap">
+                        {msg.content}
+                      </div>
                       <div
                         className={`text-[10px] mt-1 ${
-                          msg.role === "user" ? "text-black/70" : "text-gray-400"
+                          msg.role === "user"
+                            ? "text-black/70"
+                            : "text-gray-400"
                         } text-right`}
                       >
                         {formatTime(msg.timestamp)}
@@ -220,17 +250,28 @@ export default function Chatbot() {
                       <div className="flex space-x-1">
                         <motion.div
                           animate={{ y: [0, -5, 0] }}
-                          transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1 }}
+                          transition={{
+                            repeat: Number.POSITIVE_INFINITY,
+                            duration: 1,
+                          }}
                           className="h-2 w-2 rounded-full bg-gray-400"
                         />
                         <motion.div
                           animate={{ y: [0, -5, 0] }}
-                          transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1, delay: 0.2 }}
+                          transition={{
+                            repeat: Number.POSITIVE_INFINITY,
+                            duration: 1,
+                            delay: 0.2,
+                          }}
                           className="h-2 w-2 rounded-full bg-gray-400"
                         />
                         <motion.div
                           animate={{ y: [0, -5, 0] }}
-                          transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1, delay: 0.4 }}
+                          transition={{
+                            repeat: Number.POSITIVE_INFINITY,
+                            duration: 1,
+                            delay: 0.4,
+                          }}
                           className="h-2 w-2 rounded-full bg-gray-400"
                         />
                       </div>
@@ -263,16 +304,22 @@ export default function Chatbot() {
                   className="p-3 bg-[#51E171] rounded-full text-black hover:bg-[#51E171]/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   disabled={loading || message.trim() === ""}
                 >
-                  {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <Send className="h-5 w-5" />}
+                  {loading ? (
+                    <Loader2 className="h-5 w-5 animate-spin" />
+                  ) : (
+                    <Send className="h-5 w-5" />
+                  )}
                 </motion.button>
               </div>
               <div className="mt-2 text-center">
-                <span className="text-[10px] text-gray-500">Powered by Kairosystem AI</span>
+                <span className="text-[10px] text-gray-500">
+                  Powered by Kairosystem AI
+                </span>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </>
-  )
+  );
 }
