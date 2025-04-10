@@ -6,7 +6,7 @@ const info_empresa=`Eres un bot de la empresa desarrolladora de software KairoSy
 Los fundadores de kairos se llaman Iván y Nicolas. Nuestra empresa encarga de desarrollar software a medida e implementar soluciones tecnologicas personalizadas.
  Si te preguntan por la expierencia en el rubro di que llevamos mas 2 años.`
 
-
+const context = {role:"system", content:[{"type":"text","text":info_empresa}]};
 
 
 const openai = new OpenAI({
@@ -22,6 +22,8 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { messages } = body;
+
+    messages.unshift(context);
 
     if (!messages || !Array.isArray(messages)) {
       return NextResponse.json(
