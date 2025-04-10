@@ -61,25 +61,10 @@ const menuItemVariants = {
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const [hidden, setHidden] = useState(false)
-  const [lastScrollY, setLastScrollY] = useState(0)
   const [activeSection, setActiveSection] = useState("")
   
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY
-
-      setScrolled(currentScrollY > 20)
-      
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setHidden(true)
-      } else {
-        setHidden(false)
-      }
-
-      setLastScrollY(currentScrollY)
-
       // Detectar sección activa para navegación
       const sections = ["servicios", "web", "software", "contacto"]
       const current = sections.find((section) => {
@@ -98,7 +83,7 @@ export default function Navbar() {
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [lastScrollY])
+  }, [])
 
   useEffect(() => {
     if (isOpen) {
@@ -110,17 +95,10 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="h-20" />
-      <motion.nav 
+      <div className="" />
+      <nav 
         aria-label="Navegación principal"
-        initial={false}
-        animate={{
-          y: hidden ? -100 : 0,
-          backgroundColor: scrolled ? 'rgba(0, 0, 0, 0.8)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(10px)' : 'none',
-        }}
-        transition={{ duration: 0.3 }}
-        className="fixed top-0 left-0 right-0 z-50"
+        className="static top-0 left-0 right-0 z-50 bg-black"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
@@ -230,7 +208,7 @@ export default function Navbar() {
             </motion.div>
           )}
         </AnimatePresence>
-      </motion.nav>
+      </nav>
     </>
   )
 }
