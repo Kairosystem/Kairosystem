@@ -6,7 +6,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENROUTER_API_KEY || "", // Usa variables de entorno para la clave de API
   defaultHeaders: {
     "HTTP-Referer": "https://www.kairosystem.com/", // Opcional
-    "X-Title": "Kairos", // Opcional
+    "X-Title": "KairoSystem", // Opcional
   },
 });
 
