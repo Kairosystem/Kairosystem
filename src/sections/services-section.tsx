@@ -27,7 +27,6 @@ export default function ServicesSection() {
     }
   }, []);
   
-
   const services = [
     {
       id: "web",
