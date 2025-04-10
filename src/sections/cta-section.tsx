@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight, MessageSquare, Calendar, Send, CheckCircle, X, Mail, Phone, MapPin } from "lucide-react"
+import { ArrowRight, MessageSquare, Calendar, Send, CheckCircle, X, Mail, Phone } from "lucide-react"
 import Link from "next/link"
 
 export default function CTASection() {
