@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
     }
 
     const completion = await openai.chat.completions.create({
-      model: "mistralai/mistral-small-3.1-24b-instruct:free",
+      model: "anthropic/claude-3-haiku",
       messages,
     });
 
