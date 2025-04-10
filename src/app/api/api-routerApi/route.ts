@@ -6,7 +6,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENROUTER_API_KEY || "", // Usa variables de entorno para la clave de API
   defaultHeaders: {
     "HTTP-Referer": "https://www.kairosystem.com/", // Opcional
-    "X-Title": "KairoSystem", // Opcional
+    "X-Title": "Kairos", // Opcional
   },
 });
 
@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
     }
 
     const completion = await openai.chat.completions.create({
-      model: "mistralai/mistral-small-3.1-24b-instruct:free",
+      model: "anthropic/claude-3-haiku",
       messages,
     });
 
