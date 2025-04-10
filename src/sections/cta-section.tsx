@@ -3,7 +3,7 @@
 import type React from "react"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight, MessageSquare, Send, CheckCircle, X, Mail, Phone, Calendar, Clock } from "lucide-react"
+import { ArrowRight, Send, CheckCircle, X, Mail, Phone, Calendar, Clock } from "lucide-react"
 import Link from "next/link"
 
 export default function CTASection() {
@@ -16,22 +16,6 @@ export default function CTASection() {
   const [description, setDescription] = useState("")
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [selectedOption, setSelectedOption] = useState<string | null>(null)
-  const [isMobile, setIsMobile] = useState(false)
-
-  // Detectar si es dispositivo móvil
-  useEffect(() => {
-    const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-
-    // Verificar al cargar y al cambiar el tamaño de la ventana
-    checkIfMobile()
-    window.addEventListener("resize", checkIfMobile)
-
-    return () => {
-      window.removeEventListener("resize", checkIfMobile)
-    }
-  }, [])
 
   // Efecto para manejar el scroll cuando el formulario está abierto
   useEffect(() => {
@@ -151,12 +135,12 @@ export default function CTASection() {
 
           {/* Selector de opciones interactivo */}
           <div className="mb-12">
-            <div className="flex flex-col md:flex-row justify-center gap-4 max-w-3xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
               <motion.button
                 onClick={() => handleOptionSelect("presupuesto")}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className={`relative px-6 py-4 rounded-xl flex-1 transition-all duration-300 flex items-center justify-center cursor-pointer ${
+                className={`relative px-6 py-4 rounded-xl h-full transition-all duration-300 flex items-center justify-center cursor-pointer ${
                   selectedOption === "presupuesto"
                     ? "bg-[#51E171] text-black shadow-lg shadow-[#51E171]/20"
                     : "bg-gray-900/50 border border-gray-800 text-white hover:border-[#51E171]/30"
@@ -174,7 +158,7 @@ export default function CTASection() {
                 onClick={() => handleOptionSelect("llamada")}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className={`relative px-6 py-4 rounded-xl flex-1 transition-all duration-300 flex items-center justify-center cursor-pointer ${
+                className={`relative px-6 py-4 rounded-xl h-full transition-all duration-300 flex items-center justify-center cursor-pointer ${
                   selectedOption === "llamada"
                     ? "bg-[#51E171] text-black shadow-lg shadow-[#51E171]/20"
                     : "bg-gray-900/50 border border-gray-800 text-white hover:border-[#51E171]/30"
@@ -190,7 +174,7 @@ export default function CTASection() {
                 onClick={() => handleOptionSelect("whatsapp")}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className={`relative px-6 py-4 rounded-xl flex-1 transition-all duration-300 flex items-center justify-center cursor-pointer ${
+                className={`relative px-6 py-4 rounded-xl h-full transition-all duration-300 flex items-center justify-center cursor-pointer ${
                   selectedOption === "whatsapp"
                     ? "bg-[#51E171] text-black shadow-lg shadow-[#51E171]/20"
                     : "bg-gray-900/50 border border-gray-800 text-white hover:border-[#51E171]/30"
@@ -464,10 +448,10 @@ export default function CTASection() {
                               whileHover={{ scale: 1.02 }}
                               whileTap={{ scale: 0.98 }}
                               type="submit"
-                              className="w-full py-4 bg-[#51E171] text-black font-medium rounded-lg hover:bg-[#51E171]/90 transition-colors flex items-center justify-center cursor-pointer mt-4"
+                              className="w-full py-3 sm:py-4 bg-[#51E171] text-black font-medium rounded-lg hover:bg-[#51E171]/90 transition-colors flex items-center justify-center cursor-pointer mt-4 text-sm sm:text-base"
                             >
-                              <span>Solicitar presupuesto sin compromiso</span>
-                              <Send className="ml-2 h-5 w-5" />
+                              <span className="text-center">Solicitar presupuesto sin compromiso</span>
+                              <Send className="ml-2 mr-2 sm:mr-0 h-4 w-4 sm:h-5 sm:w-5" />
                             </motion.button>
                           </form>
                         </>
