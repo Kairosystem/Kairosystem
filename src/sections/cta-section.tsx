@@ -129,7 +129,7 @@ export default function CTASection() {
               viewport={{ once: true }}
               className="text-xl text-gray-300 max-w-2xl mx-auto"
             >
-              Elegí la opción que mejor se adapte a tus necesidades y comencemos a trabajar en tu proyecto digital.
+              Elegí la opción que mejor se adapte a tus necesidades y empecemos a trabajar en tu proyecto digital.
             </motion.p>
           </div>
 
