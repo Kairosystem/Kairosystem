@@ -91,8 +91,7 @@ export default function PortfolioSection() {
             <span className="text-[#EDFFCD]">Nuestro</span> <span className="text-[#51E171]">Portafolio</span>
           </h2>
           <p className="text-xl text-gray-400">
-            Explora algunos de nuestros proyectos más destacados y descubre cómo hemos ayudado a nuestros clientes a
-            alcanzar sus objetivos digitales.
+          Estos son algunos trabajos que desarrollamos para clientes reales. Cada uno está hecho con enfoque en diseño, velocidad y funcionalidad. ¿Querés que el próximo sea el tuyo?
           </p>
         </motion.div>
 

@@ -32,17 +32,17 @@ export default function ServicesSection() {
       id: "web",
       title: "Desarrollo Web",
       icon: <Globe className="h-6 w-6" />,
-      description: "Creamos experiencias web que cautivan a tus visitantes y los convierten en clientes fieles.",
+      description: "Diseñamos y desarrollamos sitios web modernos, rápidos y adaptados a tus objetivos. Nada de plantillas genéricas: código limpio, ultimas tecnologías y diseño personalizado.",
       features: [
         "Landing pages de alto impacto visual",
-        "Sitios web corporativos personalizados",
+        "Sitios corporativos a medida",
         "Tiendas online optimizadas",
         "Blogs y portales de contenido",
       ],
       benefits: [
         "Diseño responsive para todos los dispositivos",
         "Optimización SEO para mejor posicionamiento",
-        "Carga rápida y rendimiento optimizado",
+        "Alta velocidad de carga y performance",
       ],
       image: Web,
     },
@@ -51,17 +51,17 @@ export default function ServicesSection() {
       title: "Software a Medida",
       icon: <Code className="h-6 w-6" />,
       description:
-        "Desarrollamos soluciones de software personalizadas que automatizan y optimizan tus procesos de negocio.",
+        "¿Necesitás algo más que una web? Creamos herramientas digitales que se ajustan a tu negocio. Desde sistemas internos hasta plataformas más complejas.",
       features: [
         "Aplicaciones web empresariales",
         "Sistemas de gestión integral",
         "Automatización de procesos",
-        "Paneles de administración",
+        "Paneles y dashboards administrativos",
       ],
       benefits: [
-        "Soluciones adaptadas a tus necesidades",
-        "Escalabilidad para crecer con tu negocio",
-        "Integración con sistemas existentes",
+        "Soluciones hechas para tu modelo de negocio",
+        "Escalabilidad y modularidad",
+        "Integración con APIs y sistemas existentes",
       ],
       image: Software,
     },
@@ -131,7 +131,7 @@ export default function ServicesSection() {
               <span className="text-[#EDFFCD]">Nuestros</span> <span className="text-[#51E171]">Servicios</span>
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl">
-              Soluciones digitales completas para transformar tu negocio y destacar en el mundo digital
+              En Kairosystem creamos soluciones digitales adaptadas a vos. Ya sea que estés empezando o quieras mejorar tu presencia online, tenemos lo que necesitás.
             </p>
           </div>
         </motion.div>

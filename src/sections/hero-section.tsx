@@ -43,10 +43,10 @@ export default function HeroSection() {
             animate="visible"
             custom={1}
             variants={fadeIn}
-            className="text-base sm:text-lg  text-gray-200 mt-6"
+            className="text-base sm:text-lg text-gray-200 mt-6"
           >
-            Transformamos ideas en experiencias digitales impactantes. Desarrollo web y software personalizado para
-            potenciar tu presencia online.
+            Elegís el momento, creamos el impacto.
+            Desarrollo web y software desde cero, con diseño premium y resultados que destacan.
           </motion.p>
 
           <motion.div
@@ -54,27 +54,27 @@ export default function HeroSection() {
             animate="visible"
             custom={2}
             variants={fadeIn}
-            className="flex flex-row gap-4 mt-8"
+            className="flex flex-row gap-4 mt-8 w-full sm:w-auto"
           >
-            <motion.button
-              whileHover={buttonHoverEffect}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 bg-[#51E171] text-black font-medium rounded-lg shadow-lg shadow-[#51E171]/25"
-            >
-              <Link href="#portafolio" className="flex items-center justify-center">
+            <Link href="#portafolio" className="w-full sm:w-auto">
+              <motion.button
+                whileHover={buttonHoverEffect}
+                whileTap={{ scale: 0.95 }}
+                className="w-full flex items-center justify-center px-6 py-3 bg-[#51E171] text-black font-medium rounded-lg shadow-lg shadow-[#51E171]/25 hover:cursor-pointer text-sm sm:text-base"
+              >
                 Ver Portafolio
-              </Link>
-            </motion.button>
+              </motion.button>
+            </Link>
 
-            <motion.button
-              whileHover={buttonHoverEffect}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 border border-[#51E171]/50 text-[#51E171] font-medium rounded-lg hover:bg-[#51E171]/10 transition-colors duration-300"
-            >
-              <Link href="#contacto" className="flex items-center justify-center">
+            <Link href="#contacto" className="w-full sm:w-auto">
+              <motion.button
+                whileHover={buttonHoverEffect}
+                whileTap={{ scale: 0.95 }}
+                className="w-full flex items-center justify-center px-6 py-3 border border-[#51E171]/50 text-[#51E171] font-medium rounded-lg hover:bg-[#51E171]/10 transition-colors duration-300 hover:cursor-pointer text-sm sm:text-base"
+              >
                 Contacto
-              </Link>
-            </motion.button>
+              </motion.button>
+            </Link>
           </motion.div>
         </div>
       </div>

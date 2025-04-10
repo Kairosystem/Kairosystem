@@ -64,7 +64,7 @@ export default function Footer() {
 
       <motion.button
         onClick={scrollToTop}
-        className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-[#51E171] text-black w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-[#51E171]/90 transition-colors"
+        className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-[#51E171] text-black w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-[#51E171]/90 transition-colors hover:cursor-pointer"
         whileHover={{ y: -3 }}
         whileTap={{ scale: 0.95 }}
       >
@@ -154,7 +154,7 @@ export default function Footer() {
               />
               <button
                 type="submit"
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1.5 bg-[#51E171] rounded-md text-black hover:bg-[#51E171]/90 transition-colors disabled:opacity-70"
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1.5 bg-[#51E171] rounded-md text-black hover:bg-[#51E171]/90 transition-colors disabled:opacity-70 hover:cursor-pointer"
                 disabled={isSubmitting || isSubscribed || !email}
               >
                 {isSubmitting ? (
