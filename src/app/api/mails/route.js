@@ -29,7 +29,7 @@ export async function POST(req) {
     const projectTypeName = projectTypeMap[projectType] || projectType;
 
     // Enviar el correo electrónico
-    const { data, error } = await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: "Formulario KairoSystem <onboarding@resend.dev>",
       to: "kairosystem.dev@gmail.com",
       subject: `Nueva solicitud de presupuesto: ${projectTypeName}`,

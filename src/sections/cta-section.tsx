@@ -481,13 +481,24 @@ export default function CTASection() {
                               </p>
                             </div>
 
+                            {formError && (
+                              <div className="p-3 bg-red-900/50 border border-red-800 rounded-lg text-red-200 text-sm">
+                                {formError}
+                              </div>
+                            )}
+
                             <motion.button
                               whileHover={{ scale: 1.02 }}
                               whileTap={{ scale: 0.98 }}
                               type="submit"
-                              className="w-full py-3 sm:py-4 bg-[#51E171] text-black font-medium rounded-lg hover:bg-[#51E171]/90 transition-colors flex items-center justify-center cursor-pointer mt-4 text-sm sm:text-base"
+                              disabled={isSubmitting}
+                              className={`w-full py-3 sm:py-4 bg-[#51E171] text-black font-medium rounded-lg hover:bg-[#51E171]/90 transition-colors flex items-center justify-center cursor-pointer mt-4 text-sm sm:text-base ${
+                                isSubmitting ? "opacity-70 cursor-not-allowed" : ""
+                              }`}
                             >
-                              <span className="text-center">Solicitar presupuesto sin compromiso</span>
+                              <span className="text-center">
+                                {isSubmitting ? "Enviando..." : "Solicitar presupuesto sin compromiso"}
+                              </span>
                               <Send className="ml-2 mr-2 sm:mr-0 h-4 w-4 sm:h-5 sm:w-5" />
                             </motion.button>
                           </form>
