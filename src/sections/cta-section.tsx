@@ -15,7 +15,9 @@ export default function CTASection() {
   const [phone, setPhone] = useState("")
   const [description, setDescription] = useState("")
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [selectedOption, setSelectedOption] = useState<string | null>(null)
+  const [formError, setFormError] = useState<string | null>(null)
 
   // Efecto para manejar el scroll cuando el formulario está abierto
   useEffect(() => {
@@ -34,13 +36,43 @@ export default function CTASection() {
   }, [showForm])
 
   // Función para manejar el envío del formulario
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-
-    // Aquí iría la lógica para enviar el formulario
-    // Por ahora solo simulamos el envío
-    setTimeout(() => {
+    setFormError(null)
+    
+    // Validar campos requeridos
+    if (!name || !email || !projectType || !description) {
+      setFormError("Por favor completa todos los campos obligatorios")
+      return
+    }
+    
+    setIsSubmitting(true)
+    
+    try {
+      const response = await fetch("/api/mails", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          projectType,
+          description,
+          subject: "Solicitud de presupuesto",
+          type: "budget"
+        }),
+      })
+      
+      const data = await response.json()
+      
+      if (!response.ok) {
+        throw new Error(data.error || "Error al enviar el formulario")
+      }
+      
       setIsSubmitted(true)
+      
       // Resetear el formulario después de 3 segundos
       setTimeout(() => {
         setIsSubmitted(false)
@@ -52,7 +84,12 @@ export default function CTASection() {
         setDescription("")
         setSelectedOption(null)
       }, 3000)
-    }, 1000)
+    } catch (error) {
+      console.error("Error al enviar el formulario:", error)
+      setFormError(error instanceof Error ? error.message : "Error al enviar el formulario")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   // Función para cerrar el formulario
@@ -444,13 +481,24 @@ export default function CTASection() {
                               </p>
                             </div>
 
+                            {formError && (
+                              <div className="p-3 bg-red-900/50 border border-red-800 rounded-lg text-red-200 text-sm">
+                                {formError}
+                              </div>
+                            )}
+
                             <motion.button
                               whileHover={{ scale: 1.02 }}
                               whileTap={{ scale: 0.98 }}
                               type="submit"
-                              className="w-full py-3 sm:py-4 bg-[#51E171] text-black font-medium rounded-lg hover:bg-[#51E171]/90 transition-colors flex items-center justify-center cursor-pointer mt-4 text-sm sm:text-base"
+                              disabled={isSubmitting}
+                              className={`w-full py-3 sm:py-4 bg-[#51E171] text-black font-medium rounded-lg hover:bg-[#51E171]/90 transition-colors flex items-center justify-center cursor-pointer mt-4 text-sm sm:text-base ${
+                                isSubmitting ? "opacity-70 cursor-not-allowed" : ""
+                              }`}
                             >
-                              <span className="text-center">Solicitar presupuesto sin compromiso</span>
+                              <span className="text-center">
+                                {isSubmitting ? "Enviando..." : "Solicitar presupuesto sin compromiso"}
+                              </span>
                               <Send className="ml-2 mr-2 sm:mr-0 h-4 w-4 sm:h-5 sm:w-5" />
                             </motion.button>
                           </form>
