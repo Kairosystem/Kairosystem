@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -17,7 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body suppressHydrationWarning className={`${inter.className} bg-black text-white`}>{children}</body>
+      <body suppressHydrationWarning className={`${inter.className} bg-black text-white`}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   )
 }

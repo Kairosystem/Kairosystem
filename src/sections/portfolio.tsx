@@ -113,7 +113,7 @@ export default function PortfolioSection() {
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#51E171] flex items-center gap-2 font-medium"
+                      className="text-[#51E171] flex items-center gap-2 font-medium cursor-pointer"
                     >
                       <span>Visitar sitio</span>
                       <ExternalLink className="h-4 w-4" />
@@ -153,7 +153,7 @@ export default function PortfolioSection() {
               onClick={loadMoreProjects}
               whileHover={{ y: -5 }}
               whileTap={{ scale: 0.95 }}
-              className="group flex flex-col items-center gap-2"
+              className="group flex flex-col items-center gap-2 cursor-pointer"
             >
               <span className="text-[#51E171] font-medium">Ver más proyectos</span>
               <motion.div

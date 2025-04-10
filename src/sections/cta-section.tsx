@@ -99,7 +99,7 @@ export default function CTASection() {
               onClick={() => setShowForm(true)}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="group relative px-8 py-5 bg-[#51E171] text-black font-medium rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-[#51E171]/20 flex items-center justify-center"
+              className="group relative px-8 py-5 bg-[#51E171] text-black font-medium rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-[#51E171]/20 flex items-center justify-center cursor-pointer"
             >
               <span className="text-lg">Solicitar Presupuesto Gratuito</span>
               <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -112,16 +112,16 @@ export default function CTASection() {
               />
             </motion.button>
 
-            <motion.button
+            <motion.div
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="group relative px-8 py-5 border border-[#51E171]/50 text-[#51E171] font-medium rounded-xl hover:bg-[#51E171]/10 transition-colors duration-300 flex items-center justify-center"
+              className="group relative px-8 py-5 border border-[#51E171]/50 text-[#51E171] font-medium rounded-xl hover:bg-[#51E171]/10 transition-colors duration-300 flex items-center justify-center cursor-pointer"
             >
               <Link href="/proyectos" className="flex items-center">
                 <MessageSquare className="mr-2 h-5 w-5" />
                 <span className="text-lg">Ver Nuestros Proyectos</span>
               </Link>
-            </motion.button>
+            </motion.div>
           </div>
 
           {/* Información de contacto */}
@@ -131,7 +131,7 @@ export default function CTASection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
-              className="flex flex-col items-center p-6 bg-gray-900/50 border border-gray-800 rounded-xl"
+              className="flex flex-col items-center p-6 bg-gray-900/50 border border-gray-800 rounded-xl cursor-pointer hover:border-[#51E171]/30"
             >
               <div className="p-3 rounded-full bg-[#51E171]/10 text-[#51E171] mb-4">
                 <Mail className="h-6 w-6" />
@@ -139,7 +139,7 @@ export default function CTASection() {
               <h3 className="text-lg font-medium text-white mb-2">Email</h3>
               <Link
                 href="mailto:kairosystem.dev@gmail.com"
-                className="text-gray-300 hover:text-[#51E171] transition-colors text-center"
+                className="text-gray-300 hover:text-[#51E171] transition-colors text-center cursor-pointer"
               >
                 kairosystem.dev@gmail.com
               </Link>
@@ -150,7 +150,7 @@ export default function CTASection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
-              className="flex flex-col items-center p-6 bg-gray-900/50 border border-gray-800 rounded-xl"
+              className="flex flex-col items-center p-6 bg-gray-900/50 border border-gray-800 rounded-xl cursor-pointer hover:border-[#51E171]/30"
             >
               <div className="p-3 rounded-full bg-[#51E171]/10 text-[#51E171] mb-4">
                 <Phone className="h-6 w-6" />
@@ -158,7 +158,7 @@ export default function CTASection() {
               <h3 className="text-lg font-medium text-white mb-2">Teléfono</h3>
               <Link
                 href="tel:+123456789"
-                className="text-gray-300 hover:text-[#51E171] transition-colors"
+                className="text-gray-300 hover:text-[#51E171] transition-colors cursor-pointer"
               >
                 +11 5097-9192
               </Link>
@@ -182,7 +182,7 @@ export default function CTASection() {
                 >
                   <button
                     onClick={() => setShowForm(false)}
-                    className="absolute top-4 right-4 p-1 rounded-full hover:bg-gray-800 transition-colors"
+                    className="absolute top-4 right-4 p-1 rounded-full hover:bg-gray-800 transition-colors cursor-pointer"
                   >
                     <X className="h-5 w-5 text-gray-400" />
                   </button>
@@ -200,7 +200,7 @@ export default function CTASection() {
                             id="name"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#51E171]/50"
+                            className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#51E171]/50 cursor-text"
                             placeholder="Escribe tu nombre"
                             required
                           />
@@ -215,7 +215,7 @@ export default function CTASection() {
                             id="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#51E171]/50"
+                            className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#51E171]/50 cursor-text"
                             placeholder="tu@email.com"
                             required
                           />
@@ -230,7 +230,7 @@ export default function CTASection() {
                             id="phone"
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
-                            className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#51E171]/50"
+                            className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#51E171]/50 cursor-text"
                             placeholder="Tu número de teléfono"
                           />
                         </div>
@@ -243,7 +243,7 @@ export default function CTASection() {
                             id="projectType"
                             value={projectType}
                             onChange={(e) => setProjectType(e.target.value)}
-                            className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#51E171]/50"
+                            className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#51E171]/50 cursor-pointer"
                             required
                           >
                             <option value="">Selecciona una opción</option>
@@ -263,7 +263,7 @@ export default function CTASection() {
                             id="description"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
-                            className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#51E171]/50 min-h-[100px]"
+                            className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#51E171]/50 min-h-[100px] cursor-text"
                             placeholder="Describe tu idea o necesidad..."
                             required
                           ></textarea>
@@ -273,7 +273,7 @@ export default function CTASection() {
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
                           type="submit"
-                          className="w-full py-3 bg-[#51E171] text-black font-medium rounded-lg hover:bg-[#51E171]/90 transition-colors flex items-center justify-center"
+                          className="w-full py-3 bg-[#51E171] text-black font-medium rounded-lg hover:bg-[#51E171]/90 transition-colors flex items-center justify-center cursor-pointer"
                         >
                           <span>Enviar solicitud</span>
                           <Send className="ml-2 h-5 w-5" />

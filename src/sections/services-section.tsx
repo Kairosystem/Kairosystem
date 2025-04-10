@@ -4,6 +4,10 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Globe, Code, Database, Smartphone, ArrowRight, CheckCircle, ExternalLink } from "lucide-react"
 import Image from "next/image"
+import Web from "../../public/web.png"
+import Software from "../../public/software.png"
+import Appmovil from "../../public/appmovil.png"
+import Datos from "../../public/datos.png"
 
 export default function ServicesSection() {
   const [activeService, setActiveService] = useState("web")
@@ -25,7 +29,7 @@ export default function ServicesSection() {
         "Optimización SEO para mejor posicionamiento",
         "Carga rápida y rendimiento optimizado",
       ],
-      image: "/placeholder.svg?height=400&width=600",
+      image: Web,
     },
     {
       id: "software",
@@ -44,7 +48,7 @@ export default function ServicesSection() {
         "Escalabilidad para crecer con tu negocio",
         "Integración con sistemas existentes",
       ],
-      image: "/placeholder.svg?height=400&width=600",
+      image: Software,
     },
     {
       id: "data",
@@ -63,7 +67,7 @@ export default function ServicesSection() {
         "Predicciones basadas en tendencias",
         "Toma de decisiones informada",
       ],
-      image: "/placeholder.svg?height=400&width=600",
+      image: Datos,
     },
     {
       id: "mobile",
@@ -78,7 +82,7 @@ export default function ServicesSection() {
         "Integración con servicios en la nube",
       ],
       benefits: ["Experiencia de usuario fluida", "Notificaciones push para engagement", "Funcionalidad offline"],
-      image: "/placeholder.svg?height=400&width=600",
+      image: Appmovil,
     },
   ]
 
@@ -127,7 +131,7 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className={`relative group p-6 rounded-xl flex flex-col items-center text-center transition-all duration-300 ${
+              className={`relative group p-6 rounded-xl flex flex-col items-center text-center transition-all duration-300 cursor-pointer ${
                 activeService === service.id
                   ? "bg-gradient-to-br from-[#51E171]/20 to-[#51E171]/5 border border-[#51E171]/30"
                   : "bg-gray-900/50 border border-gray-800 hover:border-[#51E171]/30"
@@ -232,7 +236,7 @@ export default function ServicesSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
-                <button className="group relative px-6 py-3 bg-[#51E171] text-black font-medium rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-[#51E171]/20 flex items-center">
+                <button className="group relative px-6 py-3 bg-[#51E171] text-black font-medium rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-[#51E171]/20 flex items-center cursor-pointer">
                   <span>Solicitar información</span>
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                   <motion.div
@@ -251,35 +255,42 @@ export default function ServicesSection() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="relative"
+              className="relative w-full md:max-w-[80%] mx-auto mt-5 md:mt-0"
             >
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl shadow-black/50">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/50">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#51E171]/20 to-transparent z-10"></div>
                 <Image
                   src={activeServiceData?.image || "/placeholder.svg"}
-                  alt={activeServiceData?.title || "Servicio"}
-                  width={600}
-                  height={400}
+                  alt={activeServiceData?.title || "Servicio"} 
+                  width={1000}
+                  height={1000}
+                  quality={100}
+                  priority
                   className="w-full h-full object-cover"
+                  style={{
+                    aspectRatio: "1/1",
+                    width: "100%",
+                    height: "auto"
+                  }}
                 />
 
                 {/* Elementos decorativos sobre la imagen */}
-                <div className="absolute top-4 right-4 p-3 bg-black/70 backdrop-blur-sm rounded-lg z-20 flex items-center gap-2">
-                  <div className="h-2 w-2 rounded-full bg-[#51E171]"></div>
-                  <span className="text-sm font-medium">Kairosystem</span>
+                <div className="absolute top-2 md:top-4 right-2 md:right-4 p-2 md:p-3 bg-black/70 backdrop-blur-sm rounded-lg z-20 flex items-center gap-2">
+                  <div className="h-1.5 md:h-2 w-1.5 md:w-2 rounded-full bg-[#51E171]"></div>
+                  <span className="text-xs md:text-sm font-medium">Kairosystem</span>
                 </div>
 
-                <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black to-transparent z-20">
+                <div className="absolute bottom-0 left-0 w-full p-4 md:p-6 bg-gradient-to-t from-black to-transparent z-20 cursor-pointer">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-[#51E171]">Ver proyectos relacionados</span>
-                    <ExternalLink className="h-4 w-4 text-[#51E171]" />
+                    <span className="text-xs md:text-sm font-medium text-[#51E171]">Ver proyectos relacionados</span>
+                    <ExternalLink className="h-3 md:h-4 w-3 md:w-4 text-[#51E171]" />
                   </div>
                 </div>
               </div>
 
               {/* Elementos decorativos alrededor de la imagen */}
-              <div className="absolute -top-6 -right-6 h-12 w-12 border-t-2 border-r-2 border-[#51E171]/30"></div>
-              <div className="absolute -bottom-6 -left-6 h-12 w-12 border-b-2 border-l-2 border-[#51E171]/30"></div>
+              <div className="absolute -top-4 md:-top-6 -right-4 md:-right-6 h-8 md:h-12 w-8 md:w-12 border-t-2 border-r-2 border-[#51E171]/30"></div>
+              <div className="absolute -bottom-4 md:-bottom-6 -left-4 md:-left-6 h-8 md:h-12 w-8 md:w-12 border-b-2 border-l-2 border-[#51E171]/30"></div>
             </motion.div>
           </motion.div>
         </AnimatePresence>

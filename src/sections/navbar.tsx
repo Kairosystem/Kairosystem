@@ -108,7 +108,6 @@ export default function Navbar() {
             >
               <Link href="/" className="flex items-center gap-2">
                 <Image src={Logo} alt="KairoSystem Logo" width={40} height={40} className="h-10 w-auto" />
-                <span className="text-xl font-medium">KairoSystem</span>
               </Link>
             </motion.div>
 
@@ -123,7 +122,7 @@ export default function Navbar() {
                   <Link
                     href={item.href}
                     className={`text-sm font-medium text-gray-300 hover:text-green-400 transition-colors ${
-                      activeSection === item.href.substring(1) ? "text-green-500" : ""
+                      activeSection === item.href.substring(1) ? "text-green-400" : ""
                     }`}
                   >
                     {item.name}
@@ -134,17 +133,6 @@ export default function Navbar() {
                   />
                 </motion.div>
               ))}
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  href="#contacto"
-                  className="px-6 py-2.5 rounded-full bg-gradient-to-r from-green-500 to-green-400 text-black font-medium text-sm hover:opacity-90 transition-opacity shadow-lg shadow-green-500/20"
-                >
-                  Contactar
-                </Link>
-              </motion.div>
             </div>
 
             <motion.button
@@ -196,13 +184,6 @@ export default function Navbar() {
                   animate="show"
                   className="mt-8"
                 >
-                  <Link
-                    href="#contacto"
-                    className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-green-500 to-green-400 text-black font-medium text-lg hover:opacity-90 transition-opacity shadow-lg shadow-green-500/20"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Contactar
-                  </Link>
                 </motion.div>
               </div>
             </motion.div>
