@@ -2,9 +2,13 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { ExternalLink, ChevronDown } from "lucide-react"
+import { ExternalLink, ChevronDown, ChevronUp } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import Mockupel from "../../public/mockup_elec.png"
+import MockupIsh from "../../public/mockup_ish.png"
+import MockupLeo from "../../public/mockup_leo.png"
+import MockupIde from "../../public/mockup_ide.png"
 
 export default function PortfolioSection() {
   // Estado para controlar cuántos proyectos mostrar
@@ -16,7 +20,7 @@ export default function PortfolioSection() {
       id: 1,
       title: "Electrónica Argentina",
       description: "Tienda online especializada en componentes electrónicos y artículos tecnológicos.",
-      image: "/images/project-placeholder.svg",
+      image: Mockupel,
       url: "https://electronicargentina.com", 
       tags: ["E-commerce", "React", "Node.js"],
     },
@@ -24,31 +28,36 @@ export default function PortfolioSection() {
       id: 2,
       title: "Leo Alfieri",
       description: "Portfolio profesional del músico y productor Leo Alfieri.",
-      image: "/images/project-placeholder.svg",
+      image: MockupLeo,
       url: "https://www.leoalfierimusic.com",
       tags: ["Portfolio", "React", "Node.js"],
     },
     {
       id: 3,
-      title: "Ish Argentina", 
-      description: "Plataforma de comercio electrónico para productos de belleza y cuidado personal.",
-      image: "/images/project-placeholder.svg",
-      url: "https://www.isharg.com",
-      tags: ["E-commerce", "React", "MongoDB"],
+      title: "ISH", 
+      description: "Landing page moderna y atractiva para una marca de servicios hospitalarios.",
+      image: MockupIsh,
+      url: "https://www.isharg.com", 
+      tags: ["Landing Page", "React", "Next.js"],
     },
     {
       id: 4,
-      title: "Spotify",
-      description: "Servicio de música en streaming con millones de canciones y podcasts.",
-      image: "/images/project-placeholder.svg",
-      url: "https://www.spotify.com",
-      tags: ["Música", "React", "Node.js"],
+      title: "Iglesia Del Encuentro",
+      description: "Sitio web empresarial para una iglesia con múltiples secciones incluyendo eventos, ministerios y más.",
+      image: MockupIde, 
+      url: "https://www.iglesiaemanuelsj.com",
+      tags: ["Institucional", "React", "Next.js"],
     }
   ]
 
   // Función para cargar más proyectos
   const loadMoreProjects = () => {
     setVisibleProjects((prev) => Math.min(prev + 3, projects.length))
+  }
+
+  // Función para mostrar menos proyectos
+  const showLessProjects = () => {
+    setVisibleProjects(3)
   }
 
   return (
@@ -140,15 +149,15 @@ export default function PortfolioSection() {
           ))}
         </div>
 
-        {/* Botón "Ver más" */}
-        {visibleProjects < projects.length && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="mt-12 flex justify-center"
-          >
+        {/* Botón "Ver más" o "Ver menos" */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="mt-12 flex justify-center"
+        >
+          {visibleProjects < projects.length ? (
             <motion.button
               onClick={loadMoreProjects}
               whileHover={{ y: -5 }}
@@ -164,8 +173,24 @@ export default function PortfolioSection() {
                 <ChevronDown className="h-4 w-4" />
               </motion.div>
             </motion.button>
-          </motion.div>
-        )}
+          ) : (
+            <motion.button
+              onClick={showLessProjects}
+              whileHover={{ y: -5 }}
+              whileTap={{ scale: 0.95 }}
+              className="group flex flex-col items-center gap-2 cursor-pointer"
+            >
+              <span className="text-[#51E171] font-medium">Ver menos proyectos</span>
+              <motion.div
+                animate={{ y: [0, -5, 0] }}
+                transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
+                className="p-2 rounded-full border border-[#51E171]/30 bg-[#51E171]/10 text-[#51E171] group-hover:bg-[#51E171]/20 transition-colors duration-300"
+              >
+                <ChevronUp className="h-4 w-4" />
+              </motion.div>
+            </motion.button>
+          )}
+        </motion.div>
       </div>
     </section>
   )

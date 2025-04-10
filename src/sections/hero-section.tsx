@@ -71,7 +71,7 @@ export default function HeroSection() {
               whileTap={{ scale: 0.95 }}
               className="px-6 py-3 border border-[#51E171]/50 text-[#51E171] font-medium rounded-lg hover:bg-[#51E171]/10 transition-colors duration-300"
             >
-              <Link href="#contact" className="flex items-center justify-center">
+              <Link href="#contacto" className="flex items-center justify-center">
                 Contacto
               </Link>
             </motion.button>

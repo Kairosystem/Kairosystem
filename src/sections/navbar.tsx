@@ -8,10 +8,10 @@ import { motion, AnimatePresence } from "framer-motion"
 import Logo from "../../public/kairos_logo.png"
 
 const navItems = [
-  { name: 'Servicios', href: '#servicios' },
-  { name: 'Web', href: '#web' },
-  { name: 'Software', href: '#software' },
-  { name: 'Contacto', href: '#contacto' },
+  { name: 'Servicios', href: '/#servicios' },
+  { name: 'Web', href: '/#servicios?service=web' },
+  { name: 'Software', href: '/#servicios?service=software' }, 
+  { name: 'Contacto', href: '/#contacto' },
 ]
 
 const mobileNavVariants = {

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Globe, Code, Database, Smartphone, ArrowRight, CheckCircle, ExternalLink } from "lucide-react"
 import Image from "next/image"
@@ -11,6 +11,22 @@ import Datos from "../../public/datos.png"
 
 export default function ServicesSection() {
   const [activeService, setActiveService] = useState("web")
+
+  // Detectar el hash y parámetros en la URL al cargar la página
+  useEffect(() => {
+    const hash = window.location.hash.replace('#', '');
+    const [hashBase, queryString] = hash.split('?');
+    const params = new URLSearchParams(queryString);
+    const service = params.get('service');
+    const validServices = ["web", "software", "data", "mobile"];
+  
+    if (service && validServices.includes(service)) {
+      setActiveService(service);
+    } else if (hashBase && validServices.includes(hashBase)) {
+      setActiveService(hashBase);
+    }
+  }, []);
+  
 
   const services = [
     {
@@ -126,7 +142,10 @@ export default function ServicesSection() {
           {services.map((service) => (
             <motion.button
               key={service.id}
-              onClick={() => setActiveService(service.id)}
+              onClick={() => {
+                setActiveService(service.id);
+                window.history.pushState({}, '', `#servicios?service=${service.id}`);
+              }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
