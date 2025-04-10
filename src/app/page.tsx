@@ -1,3 +1,4 @@
+"use-client";
 import Navbar from "@/sections/navbar";
 import ServicesSection from "@/sections/services-section";
 import CTASection from "@/sections/cta-section";
