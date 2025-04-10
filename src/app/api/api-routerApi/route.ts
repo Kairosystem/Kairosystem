@@ -1,5 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
+import fs from 'fs';
+import path from 'path';
+
+const info_empresa=`Eres un bot de la empresa desarrolladora de software KairoSystem, se amable y profesional. Debes tratar de recalcar que solo estas allí para hablar y aclarar sobre los servicios que ofrecemos, por ejemplo desarrollo de software a medida. Trata de ser concreto y conciso, no mas 2 parrafos 
+Los fundadores de kairos se llaman Iván y Nicolas. Nuestra empresa encarga de desarrollar software a medida e implementar soluciones tecnologicas personalizadas.
+ Si te preguntan por la expierencia en el rubro di que llevamos mas 2 años.`
+
+const context = {role:"system", content:[{"type":"text","text":info_empresa}]};
+
 
 const openai = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",

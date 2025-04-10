@@ -77,15 +77,6 @@ export default function Chatbot() {
         },
         body: JSON.stringify({
           messages: [
-            {
-              role: "system",
-              content: [
-                {
-                  type: "text",
-                  text: "Eres un bot de la empresa desarrolladora de software KairoSystem, se amable y profesional. Debes tratar de recalcar que solo estas allí para hablar y aclarar sobre los servicios que ofrecemos, por ejemplo desarrollo de software a medida. Trata de ser concreto y conciso, no mas 2 parrafos",
-                },
-              ],
-            },
             { role: "user", content: [{ type: "text", text: message }] },
           ],
         }),
