@@ -9,8 +9,7 @@ import Logo from "../../public/kairos_logo.png"
 
 const navItems = [
   { name: 'Servicios', href: '/#servicios' },
-  { name: 'Web', href: '/#servicios?service=web' },
-  { name: 'Software', href: '/#servicios?service=software' }, 
+  { name: 'Portafolio', href: '/#portafolio' },
   { name: 'Contacto', href: '/#contacto' },
 ]
 

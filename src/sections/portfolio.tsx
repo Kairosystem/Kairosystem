@@ -61,7 +61,7 @@ export default function PortfolioSection() {
   }
 
   return (
-    <section id="portafolio" className="py-24 bg-black relative overflow-hidden">
+    <section id="portafolio" className="py-24 bg-black relative overflow-hidden lg:px-20">
       {/* Elementos decorativos de fondo */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#51E171]/30 to-transparent"></div>
       <motion.div

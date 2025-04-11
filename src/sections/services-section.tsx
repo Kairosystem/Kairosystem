@@ -113,7 +113,7 @@ export default function ServicesSection() {
   const activeServiceData = services.find((service) => service.id === activeService)
 
   return (
-    <section id="servicios" className="py-20 md:py-24 bg-black relative overflow-hidden">
+    <section id="servicios" className="py-20 md:py-24 bg-black relative overflow-hidden lg:px-20">
       {/* Elementos decorativos de fondo */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#51E171]/30 to-transparent"></div>
       <div className="absolute -top-[500px] -right-[300px] w-[800px] h-[800px] rounded-full bg-[#51E171]/5 blur-3xl"></div>

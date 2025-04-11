@@ -8,7 +8,6 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import {
   Facebook,
-  Twitter,
   Instagram,
   Linkedin,
   Github,
@@ -52,9 +51,8 @@ export default function Footer() {
 
   const socialLinks = {
     Facebook: "#",
-    Twitter: "#",
     Instagram: "https://www.instagram.com/kairosystem/",
-    Linkedin: "#",
+    Linkedin: "https://www.linkedin.com/in/kairosystem/",
     Github: "https://github.com/Kairosystem"
   }
 
@@ -88,7 +86,7 @@ export default function Footer() {
 
             <div className="flex items-center space-x-3">
               {Object.entries(socialLinks).map(([name, url], index) => {
-                const Icon = [Facebook, Twitter, Instagram, Linkedin, Github][index]
+                const Icon = [Instagram, Linkedin, Github, Facebook][index]
                 return (
                   <motion.a
                     key={name}
