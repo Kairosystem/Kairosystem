@@ -15,7 +15,7 @@ interface ChatMessage {
   timestamp: Date;
 }
 
-export default function Chatbot({ lang: _lang, dictionary }: { lang: string; dictionary: Dictionary }) {
+export default function Chatbot({ dictionary }: { lang: string; dictionary: Dictionary }) {
   const t = dictionary.chatbot;
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [message, setMessage] = useState("");

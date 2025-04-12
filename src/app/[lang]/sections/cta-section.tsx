@@ -7,7 +7,7 @@ import { ArrowRight, Send, CheckCircle, X, Mail, Phone, Calendar, Clock } from "
 import Link from "next/link"
 import type { Dictionary } from "../dictionaries"
 
-export default function CTASection({ lang: _lang, dictionary }: { lang: string; dictionary: Dictionary }) {
+export default function CTASection({ dictionary }: { lang: string; dictionary: Dictionary }) {
   // Estados para el formulario y selección
   const [showForm, setShowForm] = useState(false)
   const [projectType, setProjectType] = useState("")

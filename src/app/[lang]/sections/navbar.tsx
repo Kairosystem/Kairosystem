@@ -156,7 +156,7 @@ export default function Navbar({ lang, dictionary }: NavbarProps) {
           >
             <div className="flex flex-col items-center justify-center h-full space-y-8 px-4 pt-8">
               {navItems
-                .map((item, i) => (
+                .map((item) => (
                   <motion.div key={item.name} variants={menuItemVariants} className="w-full text-center">
                     <Link
                       href={item.href}

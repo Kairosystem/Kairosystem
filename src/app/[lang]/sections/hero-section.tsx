@@ -10,7 +10,7 @@ interface HeroSectionProps {
   dictionary: Dictionary
 }
 
-export default function HeroSection({ lang: _lang, dictionary }: HeroSectionProps) {
+export default function HeroSection({ dictionary }: HeroSectionProps) {
   const { hero } = dictionary
   
   // Variantes de animación para elementos
