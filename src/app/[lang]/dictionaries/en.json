@@ -1,0 +1,224 @@
+{
+  "navbar": {
+    "servicios": "Services",
+    "portafolio": "Portfolio",
+    "contacto": "Contact",
+    "menu": {
+      "abrir": "Open menu",
+      "cerrar": "Close menu"
+    }
+  },
+  "hero": {
+    "titulo": "Custom",
+    "titulo_literal": "digital",
+    "titulo_literal_2": "solutions just for you",
+    "subtitulo": "You choose the moment, we create the impact. Web and software development from scratch, with premium design and outstanding results.",
+    "boton_portafolio": "View Portfolio",
+    "boton_contacto": "Contact",
+    "badge": "Kairosystem"
+  },
+  "servicios": {
+    "titulo_nuestro": "Our",
+    "titulo_servicios": "Services",
+    "subtitulo": "At Kairosystem we create digital solutions adapted to you. Whether you're just starting out or want to improve your online presence, we have what you need.",
+    "web": {
+      "titulo": "Web Development",
+      "descripcion": "We design and develop modern, fast websites adapted to your goals. No generic templates: clean code, latest technologies, and personalized design.",
+      "features": [
+        "High visual impact landing pages",
+        "Custom corporate websites",
+        "Optimized online stores",
+        "Blogs and content portals"
+      ],
+      "benefits": [
+        "Responsive design for all devices",
+        "SEO optimization for better positioning",
+        "High loading speed and performance"
+      ],
+      "cta": "Request a quote"
+    },
+    "software": {
+      "titulo": "Custom Software",
+      "descripcion": "Need more than a website? We create digital tools that fit your business. From internal systems to more complex platforms.",
+      "features": [
+        "Enterprise web applications",
+        "Comprehensive management systems",
+        "Process automation",
+        "Administrative panels and dashboards"
+      ],
+      "benefits": [
+        "Solutions made for your business model",
+        "Scalability and modularity",
+        "Integration with existing APIs and systems"
+      ],
+      "cta": "Request a quote"
+    },
+    "data": {
+      "titulo": "Data Analysis",
+      "descripcion": "We turn your data into valuable information. We implement simple solutions to visualize key metrics and make better decisions for your business.",
+      "features": [
+        "Custom interactive dashboards",
+        "Automated reports",
+        "KPI and metrics visualization",
+        "Integration with your data sources"
+      ],
+      "benefits": [
+        "Clear and accessible information",
+        "Data-driven decision making",
+        "Identification of improvement opportunities"
+      ],
+      "cta": "Request a quote"
+    },
+    "chatbot": {
+      "titulo": "AI Chatbot",
+      "descripcion": "Automate customer service with a personalized chatbot powered by artificial intelligence. Available 24/7 to answer queries and generate leads.",
+      "features": [
+        "Custom chatbot for your brand",
+        "Integration with your website",
+        "Intelligent automated responses"
+      ],
+      "benefits": [
+        "24/7 customer service",
+        "Reduction of operational costs",
+        "Lead generation and qualification"
+      ],
+      "cta": "Subscribe for $50/month",
+      "nota": "This service is only available for websites developed by us or with accessible code.",
+      "nota_literal": "Note:",
+      "caracteristicas": "Features",
+      "beneficios": "Benefits"
+    },
+    "cierre": "Can't find what you're looking for? Contact us and we'll help you find the perfect solution for your business.",
+    "boton_contacto": "Contact",
+    "cierre_contacto": "and we'll help you find the perfect solution for your business."
+  },
+  "portafolio": {
+    "titulo_nuestro": "Our",
+    "titulo_portafolio": "Portfolio",
+    "subtitulo": "These are some projects we've developed for real clients. Each one is made with a focus on design, speed, and functionality. Would you like yours to be next?",
+    "verMas": "Visit site",
+    "verMasProyectos": "View more projects",
+    "verMenosProyectos": "View fewer projects",
+    "proyectos": [
+      {
+        "id": 1,
+        "titulo": "Electrónica Argentina",
+        "descripcion": "Online store specializing in electronic components and technological items.",
+        "tags": ["E-commerce", "React", "Node.js"],
+        "url": "https://electronicargentina.com"
+      },
+      {
+        "id": 2,
+        "titulo": "Leo Alfieri",
+        "descripcion": "Professional portfolio of musician and producer Leo Alfieri.",
+        "tags": ["Portfolio", "React", "Node.js"],
+        "url": "https://www.leoalfierimusic.com"
+      },
+      {
+        "id": 3,
+        "titulo": "ISH",
+        "descripcion": "Modern and attractive landing page for a hospital services brand.",
+        "tags": ["Landing Page", "React", "Next.js"],
+        "url": "https://www.isharg.com"
+      },
+      {
+        "id": 4,
+        "titulo": "Iglesia Del Encuentro",
+        "descripcion": "Corporate website for a church with multiple sections including events, ministries, and more.",
+        "tags": ["Institutional", "React", "Next.js"],
+        "url": "https://www.iglesiaemanuelsj.com"
+      }
+    ]
+  },
+  "chatbot": {
+    "titulo": "Kairosystem Assistant",
+    "estado": "Online",
+    "mensaje_bienvenida": "Hello! I'm Kairosystem's virtual assistant. How can I help you today?",
+    "placeholder": "Type a message...",
+    "enviar": "Send message",
+    "escribiendo": "Typing...",
+    "error_mensaje": "Sorry, an error occurred while processing your message. Please try again later.",
+    "powered_by": "Powered by Kairosystem AI",
+    "cerrar": "Close chat"
+  },
+  "cta": {
+    "titulo_q": "Want to develop your",
+    "titulo_w": "web",
+    "titulo_s": "or software?",
+    "subtitulo": "Choose the option that best suits your needs and let's start working on your digital project.",
+    "opciones": {
+      "presupuesto": {
+        "titulo": "Request a Quote",
+        "descripcion": "Fill out the form with the details of your project and we'll send you a detailed proposal in less than 24 hours."
+      },
+      "llamada": {
+        "titulo": "Schedule a Call",
+        "descripcion": "A direct conversation will allow us to better understand your project and offer you the most suitable solution.",
+        "disponibilidad": "Immediate availability",
+        "horarios": "We have flexible hours to adapt to your schedule. The call lasts approximately 30 minutes, enough time to analyze your needs and propose solutions.",
+        "boton": "Select date and time"
+      },
+      "whatsapp": {
+        "titulo": "Talk via WhatsApp",
+        "descripcion": "Direct and fast communication",
+        "detalle": "Our team is available to answer your queries immediately through WhatsApp. This communication channel is ideal for resolving specific questions or starting a conversation about your project.",
+        "atencion": "Personalized attention",
+        "detalle_atencion": "You will be assisted by a specialized advisor who can guide you through the development process of your project. You can share references, ideas, or any relevant information to start working.",
+        "boton": "Start conversation"
+      }
+    },
+    "formulario": {
+      "titulo": "Request a personalized quote",
+      "descripcion": "Fill out the form with the details of your project and we'll send you a detailed proposal in less than 24 hours.",
+      "nombre": "Full name",
+      "nombre_placeholder": "Enter your full name",
+      "email": "Email address",
+      "email_placeholder": "your@email.com",
+      "email_nota": "We'll send the quote to this email address",
+      "telefono": "Contact phone",
+      "telefono_placeholder": "E.g.: +1 555 123-4567",
+      "telefono_nota": "Optional, for additional inquiries about your project",
+      "tipo_proyecto": "Project type",
+      "tipo_proyecto_placeholder": "Select an option",
+      "descripcion1": "Project description",
+      "descripcion_placeholder": "Describe your idea, objectives, desired functionalities, and any relevant details for your project...",
+      "descripcion_nota": "The more details you provide, the more accurate the quote will be",
+      "boton_enviar": "Request quote with no obligation",
+      "enviando": "Sending...",
+      "error": "Please complete all required fields",
+      "exito_titulo": "Request received successfully",
+      "exito_mensaje": "We have received your quote request. Our team is analyzing your project and we'll send you a detailed proposal in less than 24 hours.",
+      "exito_nota": "Check your inbox soon"
+    },
+    "tipos_proyecto": [
+      { "id": "web", "nombre": "Website" },
+      { "id": "app", "nombre": "Mobile App" },
+      { "id": "ecommerce", "nombre": "Online Store" },
+      { "id": "software", "nombre": "Custom Software" },
+      { "id": "other", "nombre": "Other" }
+    ]
+  },
+  "footer": {
+    "logo": {
+      "descripcion": "We transform ideas into exceptional digital solutions. Specialists in web development and custom software."
+    },
+    "enlaces_rapidos": {
+      "titulo": "Quick links",
+      "links": ["Services", "Web", "Software", "Portfolio", "Contact"]
+    },
+    "contacto": {
+      "titulo": "Contact",
+      "email": "kairosystem.dev@gmail.com",
+      "telefono": "+54 9 11 5097-9192",
+      "ubicacion": "Buenos Aires, Argentina"
+    },
+    "newsletter": {
+      "titulo": "Newsletter",
+      "placeholder": "Your email",
+      "boton": "Subscribe",
+      "gracias": "Thanks for subscribing!"
+    },
+    "derechos": "© 2023 KairoSystem. All rights reserved.",
+    "enlaces_legales": ["Privacy", "Terms", "Cookies"]
+  }
+}

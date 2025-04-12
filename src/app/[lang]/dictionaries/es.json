@@ -1,0 +1,224 @@
+{
+  "navbar": {
+    "servicios": "Servicios",
+    "portafolio": "Portafolio",
+    "contacto": "Contacto",
+    "menu": {
+      "abrir": "Abrir menú",
+      "cerrar": "Cerrar menú"
+    }
+  },
+  "hero": {
+    "titulo": "Soluciones",
+    "titulo_literal": "digitales",
+    "titulo_literal_2": "a tu medida",
+    "subtitulo": "Elegís el momento, creamos el impacto. Desarrollo web y software desde cero, con diseño premium y resultados que destacan.",
+    "boton_portafolio": "Ver Portafolio",
+    "boton_contacto": "Contacto",
+    "badge": "Kairosystem"
+  },
+  "servicios": {
+    "titulo_nuestro": "Nuestros",
+    "titulo_servicios": "Servicios",
+    "subtitulo": "En Kairosystem creamos soluciones digitales adaptadas a vos. Ya sea que estés empezando o quieras mejorar tu presencia online, tenemos lo que necesitás.",
+    "web": {
+      "titulo": "Desarrollo Web",
+      "descripcion": "Diseñamos y desarrollamos sitios web modernos, rápidos y adaptados a tus objetivos. Nada de plantillas genéricas: código limpio, últimas tecnologías y diseño personalizado.",
+      "features": [
+        "Landing pages de alto impacto visual",
+        "Sitios corporativos a medida",
+        "Tiendas online optimizadas",
+        "Blogs y portales de contenido"
+      ],
+      "benefits": [
+        "Diseño responsive para todos los dispositivos",
+        "Optimización SEO para mejor posicionamiento",
+        "Alta velocidad de carga y performance"
+      ],
+      "cta": "Solicitar presupuesto"
+    },
+    "software": {
+      "titulo": "Software a Medida",
+      "descripcion": "¿Necesitás algo más que una web? Creamos herramientas digitales que se ajustan a tu negocio. Desde sistemas internos hasta plataformas más complejas.",
+      "features": [
+        "Aplicaciones web empresariales",
+        "Sistemas de gestión integral",
+        "Automatización de procesos",
+        "Paneles y dashboards administrativos"
+      ],
+      "benefits": [
+        "Soluciones hechas para tu modelo de negocio",
+        "Escalabilidad y modularidad",
+        "Integración con APIs y sistemas existentes"
+      ],
+      "cta": "Solicitar presupuesto"
+    },
+    "data": {
+      "titulo": "Análisis de Datos",
+      "descripcion": "Convertimos tus datos en información valiosa. Implementamos soluciones sencillas para visualizar métricas clave y tomar mejores decisiones para tu negocio.",
+      "features": [
+        "Dashboards interactivos personalizados",
+        "Reportes automatizados",
+        "Visualización de KPIs y métricas",
+        "Integración con tus fuentes de datos"
+      ],
+      "benefits": [
+        "Información clara y accesible",
+        "Toma de decisiones basada en datos",
+        "Identificación de oportunidades de mejora"
+      ],
+      "cta": "Solicitar presupuesto"
+    },
+    "chatbot": {
+      "titulo": "Chatbot con IA",
+      "descripcion": "Automatizá la atención al cliente con un chatbot personalizado impulsado por inteligencia artificial. Disponible 24/7 para responder consultas y generar leads.",
+      "features": [
+        "Chatbot personalizado para tu marca",
+        "Integración con tu sitio web",
+        "Respuestas automáticas inteligentes"
+      ],
+      "benefits": [
+        "Atención al cliente 24/7",
+        "Reducción de costos operativos",
+        "Generación y calificación de leads"
+      ],
+      "cta": "Suscribirse por $50/mes",
+      "nota": "Este servicio solo está disponible para sitios web desarrollados por nosotros o con código accesible.",
+      "nota_literal": "Nota",
+      "caracteristicas": "Características",
+      "beneficios": "Beneficios"
+    },
+    "cierre": "¿No encontrás lo que buscás? Contactanos y te ayudaremos a encontrar la solución perfecta para tu negocio.",
+    "boton_contacto": "Contacto",
+    "cierre_contacto": "y te ayudaremos a encontrar la solución perfecta para tu negocio."
+  },
+  "portafolio": {
+    "titulo_nuestro": "Nuestro",
+    "titulo_portafolio": "Portafolio",
+    "subtitulo": "Estos son algunos trabajos que desarrollamos para clientes reales. Cada uno está hecho con enfoque en diseño, velocidad y funcionalidad. ¿Querés que el próximo sea el tuyo?",
+    "verMas": "Visitar sitio",
+    "verMasProyectos": "Ver más proyectos",
+    "verMenosProyectos": "Ver menos proyectos",
+    "proyectos": [
+      {
+        "id": 1,
+        "titulo": "Electrónica Argentina",
+        "descripcion": "Tienda online especializada en componentes electrónicos y artículos tecnológicos.",
+        "tags": ["E-commerce", "React", "Node.js"],
+        "url": "https://electronicargentina.com"
+      },
+      {
+        "id": 2,
+        "titulo": "Leo Alfieri",
+        "descripcion": "Portfolio profesional del músico y productor Leo Alfieri.",
+        "tags": ["Portfolio", "React", "Node.js"],
+        "url": "https://www.leoalfierimusic.com"
+      },
+      {
+        "id": 3,
+        "titulo": "ISH",
+        "descripcion": "Landing page moderna y atractiva para una marca de servicios hospitalarios.",
+        "tags": ["Landing Page", "React", "Next.js"],
+        "url": "https://www.isharg.com"
+      },
+      {
+        "id": 4,
+        "titulo": "Iglesia Del Encuentro",
+        "descripcion": "Sitio web empresarial para una iglesia con múltiples secciones incluyendo eventos, ministerios y más.",
+        "tags": ["Institucional", "React", "Next.js"],
+        "url": "https://www.iglesiaemanuelsj.com"
+      }
+    ]
+  },
+  "chatbot": {
+    "titulo": "Asistente Kairosystem",
+    "estado": "En línea",
+    "mensaje_bienvenida": "¡Hola! Soy el asistente virtual de Kairosystem. ¿En qué puedo ayudarte hoy?",
+    "placeholder": "Escribe un mensaje...",
+    "enviar": "Enviar mensaje",
+    "escribiendo": "Escribiendo...",
+    "error_mensaje": "Lo siento, ha ocurrido un error al procesar tu mensaje. Por favor, intenta de nuevo más tarde.",
+    "powered_by": "Powered by Kairosystem AI",
+    "cerrar": "Cerrar chat"
+  },
+  "cta": {
+    "titulo_q": "¿Querés desarrollar tu",
+    "titulo_w": "web",
+    "titulo_s": "o software?",
+    "subtitulo": "Elegí la opción que mejor se adapte a tus necesidades y empecemos a trabajar en tu proyecto digital.",
+    "opciones": {
+      "presupuesto": {
+        "titulo": "Solicitar Presupuesto",
+        "descripcion": "Completa el formulario con los detalles de tu proyecto y te enviaremos una propuesta detallada en menos de 24 horas."
+      },
+      "llamada": {
+        "titulo": "Agendar Llamada",
+        "descripcion": "Una conversación directa nos permitirá entender mejor tu proyecto y ofrecerte la solución más adecuada.",
+        "disponibilidad": "Disponibilidad inmediata",
+        "horarios": "Contamos con horarios flexibles para adaptarnos a tu agenda. La llamada tiene una duración aproximada de 30 minutos, tiempo suficiente para analizar tus necesidades y proponer soluciones.",
+        "boton": "Seleccionar fecha y hora"
+      },
+      "whatsapp": {
+        "titulo": "Hablar por WhatsApp",
+        "descripcion": "Comunicación directa y rápida",
+        "detalle": "Nuestro equipo está disponible para responder tus consultas de forma inmediata a través de WhatsApp. Esta vía de comunicación es ideal para resolver dudas puntuales o iniciar una conversación sobre tu proyecto.",
+        "atencion": "Atención personalizada",
+        "detalle_atencion": "Te atenderá un asesor especializado que podrá guiarte en el proceso de desarrollo de tu proyecto. Podrás compartir referencias, ideas o cualquier información relevante para comenzar a trabajar.",
+        "boton": "Iniciar conversación"
+      }
+    },
+    "formulario": {
+      "titulo": "Solicitar presupuesto personalizado",
+      "descripcion": "Completa el formulario con los detalles de tu proyecto y te enviaremos una propuesta detallada en menos de 24 horas.",
+      "nombre": "Nombre completo",
+      "nombre_placeholder": "Ingresa tu nombre completo",
+      "email": "Correo electrónico",
+      "email_placeholder": "tu@email.com",
+      "email_nota": "Te enviaremos el presupuesto a esta dirección de correo",
+      "telefono": "Teléfono de contacto",
+      "telefono_placeholder": "Ej: +54 11 1234-5678",
+      "telefono_nota": "Opcional, para consultas adicionales sobre tu proyecto",
+      "tipo_proyecto": "Tipo de proyecto",
+      "tipo_proyecto_placeholder": "Selecciona una opción",
+      "descripcion1": "Descripción del proyecto",
+      "descripcion_placeholder": "Describe tu idea, objetivos, funcionalidades deseadas y cualquier detalle relevante para tu proyecto...",
+      "descripcion_nota": "Cuantos más detalles nos proporciones, más preciso será el presupuesto",
+      "boton_enviar": "Solicitar presupuesto sin compromiso",
+      "enviando": "Enviando...",
+      "error": "Por favor completa todos los campos obligatorios",
+      "exito_titulo": "Solicitud recibida con éxito",
+      "exito_mensaje": "Hemos recibido tu solicitud de presupuesto. Nuestro equipo está analizando tu proyecto y te enviaremos una propuesta detallada en menos de 24 horas.",
+      "exito_nota": "Revisa tu bandeja de entrada próximamente"
+    },
+    "tipos_proyecto": [
+      { "id": "web", "nombre": "Página Web" },
+      { "id": "app", "nombre": "Aplicación Móvil" },
+      { "id": "ecommerce", "nombre": "Tienda Online" },
+      { "id": "software", "nombre": "Software a Medida" },
+      { "id": "other", "nombre": "Otro" }
+    ]
+  },
+  "footer": {
+    "logo": {
+      "descripcion": "Transformamos ideas en soluciones digitales excepcionales. Especialistas en desarrollo web y software a medida."
+    },
+    "enlaces_rapidos": {
+      "titulo": "Enlaces rápidos",
+      "links": ["Servicios", "Web", "Software", "Portafolio", "Contacto"]
+    },
+    "contacto": {
+      "titulo": "Contacto",
+      "email": "kairosystem.dev@gmail.com",
+      "telefono": "+54 9 11 5097-9192",
+      "ubicacion": "Buenos Aires, Argentina"
+    },
+    "newsletter": {
+      "titulo": "Newsletter",
+      "placeholder": "Tu email",
+      "boton": "Suscribirse",
+      "gracias": "¡Gracias por suscribirte!"
+    },
+    "derechos": "© 2023 KairoSystem. Todos los derechos reservados.",
+    "enlaces_legales": ["Privacidad", "Términos", "Cookies"]
+  }
+}

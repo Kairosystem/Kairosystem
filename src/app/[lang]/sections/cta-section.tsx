@@ -5,8 +5,9 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ArrowRight, Send, CheckCircle, X, Mail, Phone, Calendar, Clock } from "lucide-react"
 import Link from "next/link"
+import type { Dictionary } from "../dictionaries"
 
-export default function CTASection() {
+export default function CTASection({ lang, dictionary }: { lang: string; dictionary: Dictionary }) {
   // Estados para el formulario y selección
   const [showForm, setShowForm] = useState(false)
   const [projectType, setProjectType] = useState("")
@@ -18,6 +19,9 @@ export default function CTASection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [selectedOption, setSelectedOption] = useState<string | null>(null)
   const [formError, setFormError] = useState<string | null>(null)
+
+  // Obtener datos del diccionario
+  const { cta: t } = dictionary
 
   // Efecto para manejar el scroll cuando el formulario está abierto
   useEffect(() => {
@@ -101,12 +105,12 @@ export default function CTASection() {
   }
 
   // Tipos de proyectos disponibles
-  const projectTypes = [
-    { id: "web", name: "Página Web" },
-    { id: "app", name: "Aplicación Móvil" },
-    { id: "ecommerce", name: "Tienda Online" },
-    { id: "software", name: "Software a Medida" },
-    { id: "other", name: "Otro" },
+  const projectTypes = t.tipos_proyecto || [
+    { id: "web", nombre: "Página Web" },
+    { id: "app", nombre: "Aplicación Móvil" },
+    { id: "ecommerce", nombre: "Tienda Online" },
+    { id: "software", nombre: "Software a Medida" },
+    { id: "other", nombre: "Otro" },
   ]
 
   // Función para seleccionar una opción
@@ -123,7 +127,7 @@ export default function CTASection() {
   }
 
   return (
-    <section id="contacto" className="py-16 md:py-24 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
+    <section id="contact" className="py-16 md:py-24 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
       {/* Elementos decorativos de fondo */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#51E171]/30 to-transparent"></div>
       <motion.div
@@ -156,8 +160,8 @@ export default function CTASection() {
               viewport={{ once: true }}
               className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
             >
-              <span className="text-[#EDFFCD]">¿Querés desarrollar tu</span> <span className="text-[#51E171]">web</span>{" "}
-              <span className="text-[#EDFFCD]">o software?</span>
+              <span className="text-[#EDFFCD]">{t.titulo_q}</span> <span className="text-[#51E171]">{t.titulo_w}</span>{" "}
+              <span className="text-[#EDFFCD]">{t.titulo_s}</span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -166,7 +170,7 @@ export default function CTASection() {
               viewport={{ once: true }}
               className="text-xl text-gray-300 max-w-2xl mx-auto"
             >
-              Elegí la opción que mejor se adapte a tus necesidades y empecemos a trabajar en tu proyecto digital.
+              {t.subtitulo}
             </motion.p>
           </div>
 
@@ -187,7 +191,7 @@ export default function CTASection() {
                   <Mail
                     className={`h-5 w-5 ${selectedOption === "presupuesto" ? "text-black" : "text-[#51E171]"} mr-3`}
                   />
-                  <span className="font-medium">Solicitar Presupuesto</span>
+                  <span className="font-medium">{t.opciones.presupuesto.titulo}</span>
                 </div>
               </motion.button>
 
@@ -203,7 +207,7 @@ export default function CTASection() {
               >
                 <div className="flex items-center cursor-pointer">
                   <Phone className={`h-5 w-5 ${selectedOption === "llamada" ? "text-black" : "text-[#51E171]"} mr-3`} />
-                  <span className="font-medium">Agendar Llamada</span>
+                  <span className="font-medium">{t.opciones.llamada.titulo}</span>
                 </div>
               </motion.button>
 
@@ -233,7 +237,7 @@ export default function CTASection() {
                     <path d="M14 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1Z" />
                     <path d="M9.5 13.5c.5 1 1.5 1 2 1s1.5 0 2-1" />
                   </svg>
-                  <span className="font-medium">Hablar por WhatsApp</span>
+                  <span className="font-medium">{t.opciones.whatsapp.titulo}</span>
                 </div>
               </motion.button>
             </div>
@@ -257,11 +261,9 @@ export default function CTASection() {
                         <Calendar className="h-6 w-6" />
                       </div>
                       <div>
-                        <h3 className="text-xl font-medium text-white mb-2">Agenda una llamada con nuestro equipo</h3>
+                        <h3 className="text-xl font-medium text-white mb-2">{t.opciones.llamada.titulo}</h3>
                         <p className="text-gray-300">
-                          Una conversación directa nos permitirá entender mejor tu proyecto y ofrecerte la solución más
-                          adecuada. Nuestros especialistas te guiarán a través de las opciones disponibles y responderán
-                          todas tus dudas.
+                          {t.opciones.llamada.descripcion}
                         </p>
                       </div>
                     </div>
@@ -271,11 +273,9 @@ export default function CTASection() {
                         <Clock className="h-6 w-6" />
                       </div>
                       <div>
-                        <h3 className="text-xl font-medium text-white mb-2">Disponibilidad inmediata</h3>
+                        <h3 className="text-xl font-medium text-white mb-2">{t.opciones.llamada.disponibilidad}</h3>
                         <p className="text-gray-300">
-                          Contamos con horarios flexibles para adaptarnos a tu agenda. La llamada tiene una duración
-                          aproximada de 30 minutos, tiempo suficiente para analizar tus necesidades y proponer
-                          soluciones.
+                          {t.opciones.llamada.horarios}
                         </p>
                       </div>
                     </div>
@@ -286,7 +286,7 @@ export default function CTASection() {
                         whileTap={{ scale: 0.98 }}
                         className="w-full py-4 bg-[#51E171] text-black font-medium rounded-lg hover:bg-[#51E171]/90 transition-colors flex items-center justify-center cursor-pointer"
                       >
-                        <span>Seleccionar fecha y hora</span>
+                        <span>{t.opciones.llamada.boton}</span>
                         <ArrowRight className="ml-2 h-5 w-5" />
                       </motion.button>
                     </Link>
@@ -314,11 +314,9 @@ export default function CTASection() {
                         </svg>
                       </div>
                       <div>
-                        <h3 className="text-xl font-medium text-white mb-2">Comunicación directa y rápida</h3>
+                        <h3 className="text-xl font-medium text-white mb-2">{t.opciones.whatsapp.descripcion}</h3>
                         <p className="text-gray-300">
-                          Nuestro equipo está disponible para responder tus consultas de forma inmediata a través de
-                          WhatsApp. Esta vía de comunicación es ideal para resolver dudas puntuales o iniciar una
-                          conversación sobre tu proyecto.
+                          {t.opciones.whatsapp.detalle}
                         </p>
                       </div>
                     </div>
@@ -328,11 +326,11 @@ export default function CTASection() {
                         <Clock className="h-6 w-6" />
                       </div>
                       <div>
-                        <h3 className="text-xl font-medium text-white mb-2">Atención personalizada</h3>
+                        <h3 className="text-xl font-medium text-white mb-2">
+                          {t.opciones.whatsapp.atencion}
+                        </h3>
                         <p className="text-gray-300">
-                          Te atenderá un asesor especializado que podrá guiarte en el proceso de desarrollo de tu
-                          proyecto. Podrás compartir referencias, ideas o cualquier información relevante para comenzar
-                          a trabajar.
+                          {t.opciones.whatsapp.detalle_atencion}
                         </p>
                       </div>
                     </div>
@@ -348,7 +346,7 @@ export default function CTASection() {
                         whileTap={{ scale: 0.98 }}
                         className="w-full py-4 bg-[#51E171] text-black font-medium rounded-lg hover:bg-[#51E171]/90 transition-colors flex items-center justify-center cursor-pointer"
                       >
-                        <span>Iniciar conversación</span>
+                        <span>{t.opciones.whatsapp.boton}</span>
                         <ArrowRight className="ml-2 h-5 w-5" />
                       </motion.button>
                     </Link>
@@ -388,15 +386,16 @@ export default function CTASection() {
 
                       {!isSubmitted ? (
                         <>
-                          <h3 className="text-xl font-medium text-[#EDFFCD] mb-2">Solicitar presupuesto personalizado</h3>
+                          <h3 className="text-xl font-medium text-[#EDFFCD] mb-2">
+                            {t.formulario.titulo}
+                          </h3>
                           <p className="text-gray-300 mb-6">
-                            Completa el formulario con los detalles de tu proyecto y te enviaremos una propuesta detallada
-                            en menos de 24 horas.
+                            {t.formulario.descripcion}
                           </p>
                           <form onSubmit={handleSubmit} className="space-y-4">
                             <div>
                               <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-1">
-                                Nombre completo
+                                {t.formulario.nombre}
                               </label>
                               <input
                                 type="text"
@@ -404,14 +403,14 @@ export default function CTASection() {
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#51E171]/50 cursor-text"
-                                placeholder="Ingresa tu nombre completo"
+                                placeholder={t.formulario.nombre_placeholder}
                                 required
                               />
                             </div>
 
                             <div>
                               <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-1">
-                                Correo electrónico
+                                {t.formulario.email}
                               </label>
                               <input
                                 type="email"
@@ -419,17 +418,17 @@ export default function CTASection() {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#51E171]/50 cursor-text"
-                                placeholder="tu@email.com"
+                                placeholder={t.formulario.email_placeholder}
                                 required
                               />
                               <p className="text-xs text-gray-500 mt-1">
-                                Te enviaremos el presupuesto a esta dirección de correo
+                                {t.formulario.email_nota}
                               </p>
                             </div>
 
                             <div>
                               <label htmlFor="phone" className="block text-sm font-medium text-gray-400 mb-1">
-                                Teléfono de contacto
+                                {t.formulario.telefono}
                               </label>
                               <input
                                 type="tel"
@@ -437,16 +436,16 @@ export default function CTASection() {
                                 value={phone}
                                 onChange={(e) => setPhone(e.target.value)}
                                 className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#51E171]/50 cursor-text"
-                                placeholder="Ej: +54 11 1234-5678"
+                                placeholder={t.formulario.telefono_placeholder}
                               />
                               <p className="text-xs text-gray-500 mt-1">
-                                Opcional, para consultas adicionales sobre tu proyecto
+                                {t.formulario.telefono_nota}
                               </p>
                             </div>
 
                             <div>
                               <label htmlFor="projectType" className="block text-sm font-medium text-gray-400 mb-1">
-                                Tipo de proyecto
+                                {t.formulario.tipo_proyecto}
                               </label>
                               <select
                                 id="projectType"
@@ -455,10 +454,10 @@ export default function CTASection() {
                                 className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#51E171]/50 cursor-pointer appearance-none"
                                 required
                               >
-                                <option value="">Selecciona una opción</option>
+                                <option value="">{t.formulario.tipo_proyecto_placeholder}</option>
                                 {projectTypes.map((type) => (
                                   <option key={type.id} value={type.id}>
-                                    {type.name}
+                                    {type.nombre}
                                   </option>
                                 ))}
                               </select>
@@ -466,24 +465,24 @@ export default function CTASection() {
 
                             <div>
                               <label htmlFor="description" className="block text-sm font-medium text-gray-400 mb-1">
-                                Descripción del proyecto
+                                {t.formulario.descripcion1}
                               </label>
                               <textarea
                                 id="description"
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                                 className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#51E171]/50 min-h-[120px] cursor-text resize-y"
-                                placeholder="Describe tu idea, objetivos, funcionalidades deseadas y cualquier detalle relevante para tu proyecto..."
+                                placeholder={t.formulario.descripcion_placeholder}
                                 required
                               ></textarea>
                               <p className="text-xs text-gray-500 mt-1">
-                                Cuantos más detalles nos proporciones, más preciso será el presupuesto
+                                {t.formulario.descripcion_nota}
                               </p>
                             </div>
 
                             {formError && (
                               <div className="p-3 bg-red-900/50 border border-red-800 rounded-lg text-red-200 text-sm">
-                                {formError}
+                                {t.formulario.error}
                               </div>
                             )}
 
@@ -497,7 +496,7 @@ export default function CTASection() {
                               }`}
                             >
                               <span className="text-center">
-                                {isSubmitting ? "Enviando..." : "Solicitar presupuesto sin compromiso"}
+                                {isSubmitting ? t.formulario.enviando : t.formulario.boton_enviar}
                               </span>
                               <Send className="ml-2 mr-2 sm:mr-0 h-4 w-4 sm:h-5 sm:w-5" />
                             </motion.button>
@@ -512,12 +511,15 @@ export default function CTASection() {
                           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#51E171]/20 text-[#51E171] mb-4">
                             <CheckCircle className="h-8 w-8" />
                           </div>
-                          <h3 className="text-xl font-medium text-[#EDFFCD] mb-2">Solicitud recibida con éxito</h3>
+                          <h3 className="text-xl font-medium text-[#EDFFCD] mb-2">
+                            {t.formulario.exito_titulo}
+                          </h3>
                           <p className="text-gray-300 mb-4">
-                            Hemos recibido tu solicitud de presupuesto. Nuestro equipo está analizando tu proyecto y te
-                            enviaremos una propuesta detallada en menos de 24 horas.
+                            {t.formulario.exito_mensaje}
                           </p>
-                          <p className="text-sm text-[#51E171]">Revisa tu bandeja de entrada próximamente</p>
+                          <p className="text-sm text-[#51E171]">
+                            {t.formulario.exito_nota}
+                          </p>
                         </motion.div>
                       )}
                     </motion.div>

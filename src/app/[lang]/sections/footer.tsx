@@ -18,9 +18,11 @@ import {
   Send,
   CheckCircle,
 } from "lucide-react"
-import Logo from "../../public/kairos_logo.png"
+import Logo from "@/../public/kairos_logo.png"
+import type { Dictionary } from "../dictionaries"
 
-export default function Footer() {
+export default function Footer({ lang, dictionary }: { lang: string; dictionary: Dictionary }) {
+  const { footer: t } = dictionary
   const [email, setEmail] = useState("")
   const [isSubscribed, setIsSubscribed] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -81,7 +83,7 @@ export default function Footer() {
             </div>
 
             <p className="text-gray-400 text-sm">
-              Transformamos ideas en soluciones digitales excepcionales. Especialistas en desarrollo web y software a medida.
+              {t.logo.descripcion}
             </p>
 
             <div className="flex items-center space-x-3">
@@ -105,9 +107,9 @@ export default function Footer() {
 
           {/* Enlaces rápidos */}
           <div>
-            <h3 className="text-[#EDFFCD] font-semibold text-lg mb-4">Enlaces rápidos</h3>
+            <h3 className="text-[#EDFFCD] font-semibold text-lg mb-4">{t.enlaces_rapidos.titulo}</h3>
             <ul className="space-y-2">
-              {['Servicios', 'Web', 'Software', 'Portafolio', 'Contacto'].map((item) => (
+              {t.enlaces_rapidos.links.map((item) => (
                 <li key={item}>
                   <Link
                     href={`#${item.toLowerCase()}`}
@@ -123,30 +125,32 @@ export default function Footer() {
 
           {/* Contacto */}
           <div>
-            <h3 className="text-[#EDFFCD] font-semibold text-lg mb-4">Contacto</h3>
+            <h3 className="text-[#EDFFCD] font-semibold text-lg mb-4">{t.contacto.titulo}</h3>
             <div className="space-y-3">
-              {[
-                { icon: Mail, text: "kairosystem.dev@gmail.com" },
-                { icon: Phone, text: "+54 9 11 5097-9192" },
-                { icon: MapPin, text: "Buenos Aires, Argentina" }
-              ].map((item, index) => (
-                <div key={index} className="flex items-center gap-3">
-                  <item.icon className="h-5 w-5 text-[#51E171]" />
-                  <span className="text-gray-300">{item.text}</span>
-                </div>
-              ))}
+              <div className="flex items-center gap-3">
+                <Mail className="h-5 w-5 text-[#51E171]" />
+                <span className="text-gray-300">{t.contacto.email}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone className="h-5 w-5 text-[#51E171]" />
+                <span className="text-gray-300">{t.contacto.telefono}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <MapPin className="h-5 w-5 text-[#51E171]" />
+                <span className="text-gray-300">{t.contacto.ubicacion}</span>
+              </div>
             </div>
           </div>
 
           {/* Newsletter */}
           <div>
-            <h3 className="text-[#EDFFCD] font-semibold text-lg mb-4">Newsletter</h3>
+            <h3 className="text-[#EDFFCD] font-semibold text-lg mb-4">{t.newsletter.titulo}</h3>
             <form onSubmit={handleSubscribe} className="relative">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Tu email"
+                placeholder={t.newsletter.placeholder}
                 className="w-full px-4 py-3 pr-12 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#51E171]/50 text-sm"
                 disabled={isSubmitting || isSubscribed}
               />
@@ -164,7 +168,7 @@ export default function Footer() {
                 )}
               </button>
             </form>
-            {isSubscribed && <p className="text-xs text-[#51E171] mt-2">¡Gracias por suscribirte!</p>}
+            {isSubscribed && <p className="text-xs text-[#51E171] mt-2">{t.newsletter.gracias}</p>}
           </div>
         </div>
 
@@ -172,12 +176,12 @@ export default function Footer() {
         <div className="border-t border-gray-800 py-6 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} KairoSystem. Todos los derechos reservados.
+              {t.derechos}
             </p>
             <div className="flex gap-6 text-sm">
-              <Link href="/privacidad" className="text-gray-400 hover:text-[#51E171]">Privacidad</Link>
-              <Link href="/terminos" className="text-gray-400 hover:text-[#51E171]">Términos</Link>
-              <Link href="/cookies" className="text-gray-400 hover:text-[#51E171]">Cookies</Link>
+              {t.enlaces_legales.map((enlace, index) => (
+                <Link key={index} href={`/${enlace.toLowerCase()}`} className="text-gray-400 hover:text-[#51E171]">{enlace}</Link>
+              ))}
             </div>
           </div>
         </div>

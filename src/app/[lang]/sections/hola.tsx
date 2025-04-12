@@ -5,13 +5,14 @@ import Image from "next/image"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
-import Logo from "../../public/kairos_logo.png"
+import Logo from "@/../public/kairos_logo.png"
+import LanguageSwitcher from "./language-switcher"
+import type { Dictionary } from "../dictionaries"
 
-const navItems = [
-  { name: 'Servicios', href: '/#servicios' },
-  { name: 'Portafolio', href: '/#portafolio' },
-  { name: 'Contacto', href: '/#contacto' },
-]
+interface NavbarProps {
+  lang: string
+  dictionary: Dictionary
+}
 
 const mobileNavVariants = {
   hidden: {
@@ -58,32 +59,16 @@ const menuItemVariants = {
   })
 }
 
-export default function Navbar() {
+export default function Navbar({ lang, dictionary }: NavbarProps) {
+  const { navbar } = dictionary
   const [isOpen, setIsOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState("")
   
-  useEffect(() => {
-    const handleScroll = () => {
-      // Detectar sección activa para navegación
-      const sections = ["servicios", "web", "software", "contacto"]
-      const current = sections.find((section) => {
-        const element = document.getElementById(section)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          return rect.top <= 150 && rect.bottom >= 150
-        }
-        return false
-      })
-
-      if (current) {
-        setActiveSection(current)
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
+  const navItems = [
+    { name: navbar.servicios, href: `/${lang}/#servicios` },
+    { name: navbar.portafolio, href: `/${lang}/#portafolio` },
+    { name: navbar.contacto, href: `/${lang}/#contact` },
+  ]
+  
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
@@ -105,7 +90,7 @@ export default function Navbar() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link href="/" className="flex items-center gap-2">
+              <Link href={`/${lang}`} className="flex items-center gap-2">
                 <Image src={Logo} alt="KairoSystem Logo" width={40} height={40} className="h-10 w-auto" />
               </Link>
             </motion.div>
@@ -120,9 +105,7 @@ export default function Navbar() {
                 >
                   <Link
                     href={item.href}
-                    className={`text-sm font-medium text-gray-300 hover:text-green-400 transition-colors ${
-                      activeSection === item.href.substring(1) ? "text-green-400" : ""
-                    }`}
+                    className={`text-sm font-medium text-gray-300 hover:text-green-400 transition-colors`}
                   >
                     {item.name}
                   </Link>
@@ -132,6 +115,7 @@ export default function Navbar() {
                   />
                 </motion.div>
               ))}
+              <LanguageSwitcher currentLang={lang} label={lang === "en" ? "Español" : "English"} />
             </div>
 
             <motion.button
@@ -139,7 +123,7 @@ export default function Navbar() {
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsOpen(!isOpen)}
               className="lg:hidden p-2 text-gray-300 hover:text-green-400"
-              aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+              aria-label={isOpen ? navbar.menu.cerrar : navbar.menu.abrir}
             >
               {isOpen ? <X /> : <Menu />}
             </motion.button>
@@ -167,9 +151,7 @@ export default function Navbar() {
                   >
                     <Link
                       href={item.href}
-                      className={`text-xl font-medium hover:text-green-400 transition-colors block py-2 ${
-                        activeSection === item.href.substring(1) ? "text-green-500" : "text-gray-300"
-                      }`}
+                      className={`text-xl font-medium hover:text-green-400 transition-colors block py-2 text-gray-300`}
                       onClick={() => setIsOpen(false)}
                     >
                       {item.name}
@@ -183,6 +165,7 @@ export default function Navbar() {
                   animate="show"
                   className="mt-8"
                 >
+                  <LanguageSwitcher currentLang={lang} label={lang === "en" ? "Español" : "English"} />
                 </motion.div>
               </div>
             </motion.div>

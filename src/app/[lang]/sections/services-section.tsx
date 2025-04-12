@@ -5,12 +5,18 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Globe, Code, Database, MessageSquareText, ArrowRight, CheckCircle } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import Web from "../../public/1.png"
-import Software from "../../public/2.png"
-import Datos from "../../public/3.png"
-import Chatbot from "../../public/4.png" // Reemplazar con imagen real de chatbot
+import Web from "@/../public/1.png"
+import Software from "@/../public/2.png"
+import Datos from "@/../public/3.png"
+import Chatbot from "@/../public/4.png" // Reemplazar con imagen real de chatbot
+import type { Dictionary } from "../dictionaries"
 
-export default function ServicesSection() {
+interface ServicesSectionProps {
+  lang: string
+  dictionary: Dictionary
+}
+
+export default function ServicesSection({ lang, dictionary }: ServicesSectionProps) {
   const [activeService, setActiveService] = useState("web")
 
   // Detectar el hash y parámetros en la URL al cargar la página
@@ -28,85 +34,52 @@ export default function ServicesSection() {
     }
   }, [])
 
+  const { servicios } = dictionary
+
   const services = [
     {
       id: "web",
-      title: "Desarrollo Web",
+      title: servicios.web.titulo,
       icon: <Globe className="h-6 w-6" />,
-      description:
-        "Diseñamos y desarrollamos sitios web modernos, rápidos y adaptados a tus objetivos. Nada de plantillas genéricas: código limpio, últimas tecnologías y diseño personalizado.",
-      features: [
-        "Landing pages de alto impacto visual",
-        "Sitios corporativos a medida",
-        "Tiendas online optimizadas",
-        "Blogs y portales de contenido",
-      ],
-      benefits: [
-        "Diseño responsive para todos los dispositivos",
-        "Optimización SEO para mejor posicionamiento",
-        "Alta velocidad de carga y performance",
-      ],
+      description: servicios.web.descripcion,
+      features: servicios.web.features,
+      benefits: servicios.web.benefits,
       image: Web,
-      cta: "Solicitar presupuesto",
-      ctaLink: "#contacto",
+      cta: servicios.web.cta,
+      ctaLink: "#contact",
     },
     {
       id: "software",
-      title: "Software a Medida",
+      title: servicios.software.titulo,
       icon: <Code className="h-6 w-6" />,
-      description:
-        "¿Necesitás algo más que una web? Creamos herramientas digitales que se ajustan a tu negocio. Desde sistemas internos hasta plataformas más complejas.",
-      features: [
-        "Aplicaciones web empresariales",
-        "Sistemas de gestión integral",
-        "Automatización de procesos",
-        "Paneles y dashboards administrativos",
-      ],
-      benefits: [
-        "Soluciones hechas para tu modelo de negocio",
-        "Escalabilidad y modularidad",
-        "Integración con APIs y sistemas existentes",
-      ],
+      description: servicios.software.descripcion,
+      features: servicios.software.features,
+      benefits: servicios.software.benefits,
       image: Software,
-      cta: "Solicitar presupuesto",
-      ctaLink: "#contacto",
+      cta: servicios.software.cta,
+      ctaLink: "#contact",
     },
     {
       id: "data",
-      title: "Análisis de Datos",
+      title: servicios.data.titulo,
       icon: <Database className="h-6 w-6" />,
-      description:
-        "Convertimos tus datos en información valiosa. Implementamos soluciones sencillas para visualizar métricas clave y tomar mejores decisiones para tu negocio.",
-      features: [
-        "Dashboards interactivos personalizados",
-        "Reportes automatizados",
-        "Visualización de KPIs y métricas",
-        "Integración con tus fuentes de datos",
-      ],
-      benefits: [
-        "Información clara y accesible",
-        "Toma de decisiones basada en datos",
-        "Identificación de oportunidades de mejora",
-      ],
+      description: servicios.data.descripcion,
+      features: servicios.data.features,
+      benefits: servicios.data.benefits,
       image: Datos,
-      cta: "Solicitar presupuesto",
-      ctaLink: "#contacto",
+      cta: servicios.data.cta,
+      ctaLink: "#contact",
     },
     {
       id: "chatbot",
-      title: "Chatbot con IA",
+      title: servicios.chatbot.titulo,
       icon: <MessageSquareText className="h-6 w-6" />,
-      description:
-        "Automatizá la atención al cliente con un chatbot personalizado impulsado por inteligencia artificial. Disponible 24/7 para responder consultas y generar leads.",
-      features: [
-        "Chatbot personalizado para tu marca",
-        "Integración con tu sitio web",
-        "Respuestas automáticas inteligentes",
-      ],
-      benefits: ["Atención al cliente 24/7", "Reducción de costos operativos", "Generación y calificación de leads"],
+      description: servicios.chatbot.descripcion,
+      features: servicios.chatbot.features,
+      benefits: servicios.chatbot.benefits,
       image: Chatbot,
-      cta: "Suscribirse por $50/mes",
-      ctaLink: "#contacto",
+      cta: servicios.chatbot.cta,
+      ctaLink: "#contact",
     },
   ]
 
@@ -137,11 +110,10 @@ export default function ServicesSection() {
               className="h-1 w-20 bg-[#51E171] mb-6"
             ></motion.div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              <span className="text-[#EDFFCD]">Nuestros</span> <span className="text-[#51E171]">Servicios</span>
+              <span className="text-[#EDFFCD]">{servicios.titulo_nuestro}</span> <span className="text-[#51E171]">{servicios.titulo_servicios}</span>
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl">
-              En Kairosystem creamos soluciones digitales adaptadas a vos. Ya sea que estés empezando o quieras mejorar
-              tu presencia online, tenemos lo que necesitás.
+              {servicios.subtitulo}
             </p>
           </div>
         </motion.div>
@@ -216,8 +188,7 @@ export default function ServicesSection() {
                 {activeService === "chatbot" && (
                   <div className="mt-4 p-3 bg-[#EDFFCD]/10 border border-[#EDFFCD]/20 rounded-lg">
                     <p className="text-sm text-[#EDFFCD]">
-                      <strong>Nota:</strong> Este servicio solo está disponible para sitios web desarrollados por
-                      nosotros o con código accesible.
+                      <strong>{servicios.chatbot.nota_literal}:</strong> {servicios.chatbot.nota}
                     </p>
                   </div>
                 )}
@@ -227,7 +198,7 @@ export default function ServicesSection() {
               <div className="bg-gray-900/30 border border-gray-800 rounded-xl p-6">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="h-4 w-4 rounded-full bg-[#51E171]"></div>
-                  <h4 className="text-lg font-medium text-[#EDFFCD]">Lo que incluye</h4>
+                  <h4 className="text-lg font-medium text-[#EDFFCD]">{servicios.chatbot.caracteristicas}</h4>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
@@ -248,7 +219,7 @@ export default function ServicesSection() {
                 <div className="mt-6 pt-6 border-t border-gray-800">
                   <div className="flex items-center gap-2 mb-4">
                     <div className="h-4 w-4 rounded-full bg-[#51E171]"></div>
-                    <h4 className="text-lg font-medium text-[#EDFFCD]">Beneficios</h4>
+                    <h4 className="text-lg font-medium text-[#EDFFCD]">{servicios.chatbot.beneficios}</h4>
                   </div>
 
                   <div className="space-y-3">
@@ -274,9 +245,9 @@ export default function ServicesSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
-                <Link href={activeServiceData?.ctaLink || "/contacto"}>
+                <Link href={activeServiceData?.ctaLink || "#contact"}>
                   <button className="group relative px-6 py-3 bg-[#51E171] text-black font-medium rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-[#51E171]/20 flex items-center cursor-pointer">
-                    <span>{activeServiceData?.cta || "Solicitar información"}</span>
+                    <span>{activeServiceData?.cta}</span>
                     <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                     <motion.div
                       className="absolute inset-0 bg-white"
@@ -287,13 +258,6 @@ export default function ServicesSection() {
                     />
                   </button>
                 </Link>
-
-                {/* Precio mensual para Chatbot */}
-                {activeService === "chatbot" && (
-                  <p className="mt-3 text-sm text-gray-400 text-center">
-                    Servicio por suscripción: <span className="text-[#51E171] font-medium">$50 USD/mes</span>
-                  </p>
-                )}
               </motion.div>
             </div>
 
@@ -338,11 +302,11 @@ export default function ServicesSection() {
           className="mt-16 text-center max-w-3xl mx-auto"
         >
           <p className="text-gray-400">
-            ¿No encontrás lo que buscás?{" "}
-            <Link href="#contacto" className="text-[#51E171] hover:underline">
-              Contactanos
+            {servicios.cierre}{" "}
+            <Link href="#contact" className="text-[#51E171] hover:underline">
+              {servicios.boton_contacto}
             </Link>{" "}
-            y te ayudaremos a encontrar la solución perfecta para tu negocio.
+            {servicios.cierre_contacto}
           </p>
         </motion.div>
       </div>

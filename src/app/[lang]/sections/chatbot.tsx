@@ -4,6 +4,7 @@ import type React from "react";
 import { useState, useRef, useEffect } from "react";
 import { Bot, X, Send, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import type { Dictionary } from "../dictionaries";
 
 // Definir tipos para los mensajes
 type MessageRole = "user" | "bot";
@@ -14,13 +15,13 @@ interface ChatMessage {
   timestamp: Date;
 }
 
-export default function Chatbot() {
+export default function Chatbot({ lang, dictionary }: { lang: string; dictionary: Dictionary }) {
+  const t = dictionary.chatbot;
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
-      content:
-        "¡Hola! Soy el asistente virtual de Kairosystem. ¿En qué puedo ayudarte hoy?",
+      content: t.mensaje_bienvenida,
       role: "bot",
       timestamp: new Date(),
     },
@@ -113,8 +114,7 @@ export default function Chatbot() {
         setMessages((prevMessages) => [
           ...prevMessages,
           {
-            content:
-              "Lo siento, ha ocurrido un error al procesar tu mensaje. Por favor, intenta de nuevo más tarde.",
+            content: t.error_mensaje,
             role: "bot",
             timestamp: new Date(),
           },
@@ -178,18 +178,18 @@ export default function Chatbot() {
                 </div>
                 <div>
                   <h3 className="font-medium text-white">
-                    Asistente Kairosystem
+                    {t.titulo}
                   </h3>
                   <div className="flex items-center gap-1">
                     <span className="h-2 w-2 rounded-full bg-[#51E171]"></span>
-                    <span className="text-xs text-gray-300">En línea</span>
+                    <span className="text-xs text-gray-300">{t.estado}</span>
                   </div>
                 </div>
               </div>
               <button
                 onClick={toggleChat}
                 className="text-gray-400 hover:text-white p-1 rounded-full hover:bg-gray-700/50 transition-colors"
-                aria-label="Cerrar chat"
+                aria-label={t.cerrar}
               >
                 <X className="h-5 w-5" />
               </button>
@@ -284,7 +284,7 @@ export default function Chatbot() {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   onKeyDown={handleKeyPress}
-                  placeholder="Escribe un mensaje..."
+                  placeholder={t.placeholder}
                   className="flex-1 p-3 bg-[#333333] text-white border border-gray-700 rounded-full focus:outline-none focus:ring-2 focus:ring-[#51E171] text-sm"
                   disabled={loading}
                 />
@@ -304,7 +304,7 @@ export default function Chatbot() {
               </div>
               <div className="mt-2 text-center">
                 <span className="text-[10px] text-gray-500">
-                  Powered by Kairosystem AI
+                  {t.powered_by}
                 </span>
               </div>
             </div>

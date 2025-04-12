@@ -3,8 +3,16 @@
 import { motion } from "framer-motion"
 import { ChevronDown } from "lucide-react"
 import Link from "next/link"
+import type { Dictionary } from "../dictionaries"
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  lang: string
+  dictionary: Dictionary
+}
+
+export default function HeroSection({ lang, dictionary }: HeroSectionProps) {
+  const { hero } = dictionary
+  
   // Variantes de animación para elementos
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -34,7 +42,7 @@ export default function HeroSection() {
               Kairosystem
             </span>
             <h1 className="text-4xl sm:text-5xl font-bold leading-tight text-[#EDFFCD]">
-              Soluciones <span className="text-[#51E171]">digitales</span> a tu medida
+              {hero.titulo} <span className="text-[#51E171]">{hero.titulo_literal}</span> {hero.titulo_literal_2}
             </h1>
           </motion.div>
 
@@ -45,8 +53,7 @@ export default function HeroSection() {
             variants={fadeIn}
             className="text-base sm:text-lg text-gray-200 mt-6"
           >
-            Elegís el momento, creamos el impacto.
-            Desarrollo web y software desde cero, con diseño premium y resultados que destacan.
+            {hero.subtitulo}
           </motion.p>
 
           <motion.div
@@ -62,17 +69,17 @@ export default function HeroSection() {
                 whileTap={{ scale: 0.95 }}
                 className="w-full flex items-center justify-center px-6 py-3 bg-[#51E171] text-black font-medium rounded-lg shadow-lg shadow-[#51E171]/25 hover:cursor-pointer text-sm sm:text-base"
               >
-                Ver Portafolio
+                {hero.boton_portafolio}
               </motion.button>
             </Link>
 
-            <Link href="#contacto" className="w-full sm:w-auto">
+            <Link href="#contact" className="w-full sm:w-auto">
               <motion.button
                 whileHover={buttonHoverEffect}
                 whileTap={{ scale: 0.95 }}
                 className="w-full flex items-center justify-center px-6 py-3 border border-[#51E171]/50 text-[#51E171] font-medium rounded-lg hover:bg-[#51E171]/10 transition-colors duration-300 hover:cursor-pointer text-sm sm:text-base"
               >
-                Contacto
+                {hero.boton_contacto}
               </motion.button>
             </Link>
           </motion.div>

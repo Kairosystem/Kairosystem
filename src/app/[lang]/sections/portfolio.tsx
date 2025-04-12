@@ -5,50 +5,34 @@ import { motion } from "framer-motion"
 import { ExternalLink, ChevronDown, ChevronUp } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import Mockupel from "../../public/mockup_elec.png"
-import MockupIsh from "../../public/mockup_ish.png"
-import MockupLeo from "../../public/mockup_leo.png"
-import MockupIde from "../../public/mockup_ide.png"
+import Mockupel from "@/../public/mockup_elec.png"
+import MockupIsh from "@/../public/mockup_ish.png"
+import MockupLeo from "@/../public/mockup_leo.png"
+import MockupIde from "@/../public/mockup_ide.png"
+import type { Dictionary } from "../dictionaries"
 
-export default function PortfolioSection() {
+interface PortfolioSectionProps {
+  lang: string
+  dictionary: Dictionary
+}
+
+export default function PortfolioSection({ lang, dictionary }: PortfolioSectionProps) {
   // Estado para controlar cuántos proyectos mostrar
   const [visibleProjects, setVisibleProjects] = useState(3)
 
-  // Datos de ejemplo para los proyectos
-  const projects = [
-    {
-      id: 1,
-      title: "Electrónica Argentina",
-      description: "Tienda online especializada en componentes electrónicos y artículos tecnológicos.",
-      image: Mockupel,
-      url: "https://electronicargentina.com", 
-      tags: ["E-commerce", "React", "Node.js"],
-    },
-    {
-      id: 2,
-      title: "Leo Alfieri",
-      description: "Portfolio profesional del músico y productor Leo Alfieri.",
-      image: MockupLeo,
-      url: "https://www.leoalfierimusic.com",
-      tags: ["Portfolio", "React", "Node.js"],
-    },
-    {
-      id: 3,
-      title: "ISH", 
-      description: "Landing page moderna y atractiva para una marca de servicios hospitalarios.",
-      image: MockupIsh,
-      url: "https://www.isharg.com", 
-      tags: ["Landing Page", "React", "Next.js"],
-    },
-    {
-      id: 4,
-      title: "Iglesia Del Encuentro",
-      description: "Sitio web empresarial para una iglesia con múltiples secciones incluyendo eventos, ministerios y más.",
-      image: MockupIde, 
-      url: "https://www.iglesiaemanuelsj.com",
-      tags: ["Institucional", "React", "Next.js"],
-    }
-  ]
+  // Obtener los datos del diccionario
+  const { portafolio } = dictionary
+
+  // Mapear los proyectos con las imágenes correspondientes
+  const projectImages = [Mockupel, MockupLeo, MockupIsh, MockupIde]
+  const projects = portafolio.proyectos.map((proyecto, index) => ({
+    id: proyecto.id,
+    title: proyecto.titulo,
+    description: proyecto.descripcion,
+    image: projectImages[index],
+    url: proyecto.url,
+    tags: proyecto.tags,
+  }))
 
   // Función para cargar más proyectos
   const loadMoreProjects = () => {
@@ -88,10 +72,11 @@ export default function PortfolioSection() {
             className="h-1 w-20 bg-[#51E171] mx-auto mb-6"
           ></motion.div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-[#EDFFCD]">Nuestro</span> <span className="text-[#51E171]">Portafolio</span>
+            <span className="text-[#EDFFCD]">{portafolio.titulo_nuestro}</span>{" "}
+            <span className="text-[#51E171]">{portafolio.titulo_portafolio}</span>
           </h2>
           <p className="text-xl text-gray-400">
-          Estos son algunos trabajos que desarrollamos para clientes reales. Cada uno está hecho con enfoque en diseño, velocidad y funcionalidad. ¿Querés que el próximo sea el tuyo?
+            {portafolio.subtitulo}
           </p>
         </motion.div>
 
@@ -123,7 +108,7 @@ export default function PortfolioSection() {
                       rel="noopener noreferrer"
                       className="text-[#51E171] flex items-center gap-2 font-medium cursor-pointer"
                     >
-                      <span>Visitar sitio</span>
+                      <span>{portafolio.verMas}</span>
                       <ExternalLink className="h-4 w-4" />
                     </Link>
                   </div>
@@ -163,7 +148,7 @@ export default function PortfolioSection() {
               whileTap={{ scale: 0.95 }}
               className="group flex flex-col items-center gap-2 cursor-pointer"
             >
-              <span className="text-[#51E171] font-medium">Ver más proyectos</span>
+              <span className="text-[#51E171] font-medium">{portafolio.verMasProyectos}</span>
               <motion.div
                 animate={{ y: [0, 5, 0] }}
                 transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
@@ -179,7 +164,7 @@ export default function PortfolioSection() {
               whileTap={{ scale: 0.95 }}
               className="group flex flex-col items-center gap-2 cursor-pointer"
             >
-              <span className="text-[#51E171] font-medium">Ver menos proyectos</span>
+              <span className="text-[#51E171] font-medium">{portafolio.verMenosProyectos}</span>
               <motion.div
                 animate={{ y: [0, -5, 0] }}
                 transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
