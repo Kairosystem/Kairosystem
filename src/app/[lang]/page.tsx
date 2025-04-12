@@ -9,7 +9,7 @@ export async function generateStaticParams() {
   return [{ lang: "es" }, { lang: "en" }];
 }
 
-export default async function Home({ params }: { params: { lang: string } }) {
+export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   // Obtener el diccionario para el idioma actual
   const { lang } = await params
   const dictionary = await getDictionary(lang)
