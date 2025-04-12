@@ -14,7 +14,6 @@ interface LanguageSwitcherProps {
 
 export default function LanguageSwitcher({ 
   currentLang, 
-  label, 
   variant = "default" 
 }: LanguageSwitcherProps) {
   const pathname = usePathname()

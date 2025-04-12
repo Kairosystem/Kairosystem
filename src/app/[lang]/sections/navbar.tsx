@@ -51,7 +51,6 @@ const menuItemVariants = {
 export default function Navbar({ lang, dictionary }: NavbarProps) {
   const { navbar } = dictionary
   const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
 
   const navItems = [
@@ -59,20 +58,6 @@ export default function Navbar({ lang, dictionary }: NavbarProps) {
     { name: navbar.portafolio, href: `/${lang}/#portafolio` },
     { name: navbar.contacto, href: `/${lang}/#contact` },
   ]
-
-  // Handle scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true)
-      } else {
-        setScrolled(false)
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {

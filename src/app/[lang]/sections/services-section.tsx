@@ -16,7 +16,7 @@ interface ServicesSectionProps {
   dictionary: Dictionary
 }
 
-export default function ServicesSection({ lang, dictionary }: ServicesSectionProps) {
+export default function ServicesSection({ dictionary }: ServicesSectionProps) {
   const [activeService, setActiveService] = useState("web")
 
   // Detectar el hash y parámetros en la URL al cargar la página

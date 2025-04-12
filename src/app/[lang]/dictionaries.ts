@@ -174,5 +174,5 @@ const dictionaries = {
 export const getDictionary = async (locale: string): Promise<Dictionary> => {
   // Verificar si el idioma solicitado existe, si no, usar español como predeterminado
   const validLocale = locale in dictionaries ? locale : 'es'
-  return (dictionaries as any)[validLocale]()
+  return (dictionaries as unknown as { [key: string]: () => Promise<Dictionary> })[validLocale]()
 }

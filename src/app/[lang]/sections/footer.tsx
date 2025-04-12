@@ -21,7 +21,7 @@ import {
 import Logo from "@/../public/kairos_logo.png"
 import type { Dictionary } from "../dictionaries"
 
-export default function Footer({ lang, dictionary }: { lang: string; dictionary: Dictionary }) {
+export default function Footer({ lang: _lang, dictionary }: { lang: string; dictionary: Dictionary }) {
   const { footer: t } = dictionary
   const [email, setEmail] = useState("")
   const [isSubscribed, setIsSubscribed] = useState(false)

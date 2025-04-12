@@ -16,7 +16,7 @@ interface PortfolioSectionProps {
   dictionary: Dictionary
 }
 
-export default function PortfolioSection({ lang, dictionary }: PortfolioSectionProps) {
+export default function PortfolioSection({ dictionary }: PortfolioSectionProps) {
   // Estado para controlar cuántos proyectos mostrar
   const [visibleProjects, setVisibleProjects] = useState(3)
 
